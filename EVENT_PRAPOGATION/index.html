@@ -1,0 +1,52 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document </title>
+</head>
+<body>
+    <div class="parentDiv" onclick="parentCall(event)"> HI
+    <div class="childDiv" onclick="childCall(event)">
+        WELCOME
+    </div>
+    </div>
+    <script>
+const parentCall =(e) =>{
+    alert('parent div call')
+    console.log('parent div call')
+}
+
+const childCall = (e) =>{
+    e.stopPropagation();
+    alert('child div call')
+    console.log('child div call')
+}
+
+</script>
+    
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+       <span> DIV</span>
+        <form action="">
+            <span> Form</span>
+            <div> <span><button>Button</button></span></div>
+          
+            
+        </form>
+    </div>
+    <script src="evnet_prapogation.js">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing</title>
+    <!-- add lodash library which having Debouncing functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+        integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+        crossorigin="anonymous" referrer policy="no-referrer"></script>
+</head>
+
+<body>
+    <!-- button pressed x time every time button pressed  -->
+    <button class="increment_button">Increment</button>
+    <p>Pressed Button <span class="pressed_button"> 0 </span> Time </p>
+    <!-- increased triggered by time count 800 ms of debounces -->
+    <p>Triggered <span class="increment_count"> 0 </span> Time </p>
+    <!-- <script src="Debouncing.js"></script> -->
+    <script src="PolyfillOfDebouncing.js"></script>
+</body>
+
+</html>
+
+
+
+
+<!-- Q what is differences between the DeBouncing and throttling 
+ * debouncing and throttling are techniques used to control the frequency of function or optimize event execution.
+Debouncing : 
+* Wait for the certain time before invoking the function again 
+ * The purpose of debouncing is to delay the execution of a function until a pause in event occurrences
+ It ensures that the function is only executed once after a series of rapid events.
+* Debouncing is often used for scenarios like handling user input or scroll events, where you want to wait for a pause in input before triggering a function to avoid rapid, unintended executions.
+: Debouncing is typically implemented by using a timer. 
+When an event occurs, a timer is started. If another event occurs before the timer elapses, the timer is reset
+The function is executed only when the timer finally expires, indicating a pause in event occurrences.
+ Debouncing is concerned with ensuring that the function is only executed once, and it waits for a pause in event occurrences. It's about delaying execution until the events have stopped for a certain duration
+ - remove the unwanted noices form the input box, button 
+
+
+Throttling : 
+* Limit the number of time the function can be called over the certain period 
+* Ensure that the function is called only once if the event is triggered multiple time
+*  Throttling is used to limit the rate at which a function can be executed. It ensures that a function is called at a maximum frequency, regardless of how often the event occurs
+Throttling is commonly used for scenarios like rate-limiting API requests or preventing resource-intensive operations from overloading a system.
+Throttling can be implemented by allowing the function to execute at a fixed interval or rate
+For example, you may execute the function every 100 milliseconds. Any excess calls that occur within that interval are ignored until the next interval begins.
+ Throttling focuses on limiting the rate at which a function is executed. It guarantees that the function is executed at a controlled pace and doesn't exceed a certain rate, regardless of how frequently the events occur
+
+
+
+
+ -->

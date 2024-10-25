@@ -1,0 +1,14 @@
+// Promise.all():
+ 
+// 1. Resolves only if all promises resolve, rejects on any failure.
+// 2. Stops as soon as one promise rejects and returns that rejection.
+// 3. Returns an array of resolved values or a single rejection.
+// 4  When you need all promises to succeed and halt on failure.
+
+
+// Promise.allSettled():
+
+// 1. Resolves after all promises settle (resolved or rejected).
+// 2. Waits for all promises to settle and gives individual results.
+// 3. Returns an array of objects describing the outcome of each promise (fulfilled/rejected).
+// 4. When you need to know the result of every promise, even if some fail.

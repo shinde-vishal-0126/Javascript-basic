@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body><div class="main" id="12">
+      <div class="child1" name="vishal">Child 1</div>
+      <div class="child2">Child 2</div>
+      <div class="child3">child 3</div>
+    </div>
+    <script>
+        // Create the box first
+        const box = document.createElement("div");
+        box.id = "box";
+        document.body.appendChild(box);
+        
+        // Create the button
+        const button = document.createElement('button');
+        button.innerText = 'Button';
+        button.id = 'button-1';
+        
+        // Append the button to the box
+        box.appendChild(button);
+      </script>
+   
+  </body>
+</html>
