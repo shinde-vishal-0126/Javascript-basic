@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resize Example</title>
+</head>
+<body>
+    <p id="demo">Resize the window to see the dimensions here</p>
+</body>
+<script>
+const demo = document.getElementById('demo');
+
+
+const throttleFunction = (fun, delay) =>{
+    let lastCall =0
+    return function(...args){
+        let now = new Date().getTime();
+        if(now - lastCall < delay) return
+            lastCall = now;
+            fun(...args)
+        
+    }
+  
+}
+
+// another approach 
+
+const throttleFun = (fun, delay)=>{
+    let isFunctionCall = true
+    return function(...args){
+        if(!isFunctionCall) return 
+        fun(...args);
+        isFunctionCall = false
+        setTimeout(()=>{
+            isFunctionCall=true
+        },delay)
+
+
+
+    }
+}
+
+const resizeWindow = () => {
+    const w = window.innerWidth; // Width of the viewport
+    const h = window.innerHeight; // Height of the viewport
+    const text = `Width is ${w} and Height is ${h}`;
+    demo.innerHTML = text;    
+}
+
+// window.addEventListener('resize',throttleFunction (resizeWindow, 5000));
+window.addEventListener('resize',throttleFun (resizeWindow, 500));
+</script>
+</html>

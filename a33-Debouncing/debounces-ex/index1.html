@@ -1,0 +1,58 @@
+<!-- akshay sahani -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input" placeholder="enter the data" onkeyup="betterFunction()">
+
+
+
+    <script>
+const getData =() =>{
+    console.log('fetching api calls')
+}
+
+// const doMaticFunction = (fun, delay) =>{
+//     let timer;
+//     return function(...args){
+//         clearInterval(timer)
+//         timer = setTimeout(()=>{
+//             getData();
+//         },delay)
+//     }
+
+// }
+
+
+// also used following approach
+const doMaticFunction = (fun,delay) =>{
+    // here callback function only call if the differences between the timeinterval between two function call is grater the the delay 
+    let timer;
+    return function(){
+        // to get the data form you have to maintain context here also get the arguments here which you have provided 
+        let context = this
+        args = arguments
+        clearTimeout(timer)
+     timer =  setTimeout(()=>{
+            // apply method to get this variable and context 
+            getData.apply(context,args)
+
+        },delay)
+        //here we have to call the getData() method and wait for calling api to 300 ms and if again key stock happen then we stop calling this method 
+        // to stop calling this method some how clearTimeout()
+    }
+
+}
+
+const betterFunction = doMaticFunction(getData , 300)
+
+
+
+    </script>
+</body>
+</html>

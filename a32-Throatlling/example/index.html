@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      section {
+        height: 3000px; /* Increase height to make the page scrollable */
+        background: linear-gradient(to bottom, #f9f9f9, #ccc);
+        padding: 20px;
+      }
+
+      h1 {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background: white;
+        padding: 10px;
+        z-index: 10;
+      }
+
+      p {
+        margin: 20px 0;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body onscroll="showCount()">
+    <!-- <h1>Throttling</h1> -->
+    <section>
+      <p id="normalCount">Normal Count: 0</p>
+      <p id="throttleCount">Throttling Count: 0</p>
+      <p>Scroll down to see the counters increase.</p>
+    </section>
+
+    <script>
+      const n_count = document.getElementById("normalCount");
+      const t_count = document.getElementById("throttleCount");
+
+      let normal_count = 0;
+      let throttle_count = 0;
+
+      const normalCount = () => {
+        normal_count++;
+        n_count.innerHTML = `Normal Count: ${normal_count}`;
+      };
+
+
+      const throttle = (func, delay) => {
+        let lastCall = 0;
+        return function (...args) {
+          const now = new Date().getTime();
+          if (now - lastCall >= delay) {
+            lastCall = now;
+            func(...args);
+          }
+
+        };
+      };
+
+    //   // also you have to defined function in following way
+    //   const throttleFunction = (fun, delay) => {
+    //     let functionShouldCall = true;
+    //     return function (...args) {
+            // if(!functionShouldCall) return;
+    //       fun(...arg);
+    //       functionShouldCall = false;
+
+    //       setTimeout(() => {
+    //         functionShouldCall = true;
+    //       }, delay);
+    //     };
+    //   };
+
+      const throttleCount = throttle(() => {
+        throttle_count++;
+        t_count.innerHTML = `Throttling Count: ${throttle_count}`;
+      }, 200); // Throttle delay set to 200ms
+
+      const showCount = () => {
+        normalCount();
+        throttleCount();
+      };
+    </script>
+  </body>
+</html>

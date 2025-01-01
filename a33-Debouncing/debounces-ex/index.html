@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Debouncing</h1>
+    <input type="text" placeholder="enter the name" id="inputValue">
+
+    <script>
+      const input = document.getElementById('inputValue')
+
+    
+    const debounce1 = (fun, limit) =>{
+        // debounces calculated based on timer
+        let timeId;
+        return function(...args){
+            clearTimeout(timeId);
+          timeId =  setTimeout(()=>{
+                fun(...args);
+            },limit)
+        }
+    }
+    const getInputValue = (e) =>{
+        const input = e.target.value;
+        console.log(input)
+    }
+
+    const newFun = debounce1(getInputValue, 500)
+      input.addEventListener('input',newFun )
+
+
+
+    </script>
+</body>
+</html>

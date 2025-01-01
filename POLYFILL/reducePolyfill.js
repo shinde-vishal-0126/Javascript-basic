@@ -1,50 +1,32 @@
-// REDUCE POLYFILL 
-
-// reduce(callback(accumulator, currentValue, index, array), initialValue);
-
-    // having a callback funtion with  4 arguments accumulator, current value , index , array
-    // does not modified origional array insted process the array element and return single acculated result based on provoded callback function
+// 
+// The reduce method in JavaScript is a powerful array method that allows you to reduce an array to a single value by iteratively applying a callback function
+//  It can be used for various operations such as summing numbers, flattening arrays, or accumulating values
 
 
-    Array.prototype.myReduce = function(callback, initialValue){
-        if(this == null){
-            throw new TypeError ('myReduce method call on null or undefined')
-        }
-        if(typeof callback !== 'function'){
-            throw new TypeError(callback + 'is not a function');
-        }
+// array.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])
 
-        // initialize the variable 
-        let accumulator;
-        let startIndex = 0
+// callback: A function executed on each element in the array. It receives four arguments:
+// accumulator: The accumulated value from the previous iteration or the initial value (if provided).
+// currentValue: The current element being processed in the array.
+// index (optional): The index of the current element being processed.
+// array (optional): The array that reduce was called on.
+// initialValue (optional): A value to initialize the accumulator. If not provided, the first element of the array will be used as the initial accumulator, and the iteration will start from the second element.
 
-        // if initialValue is provided used it as the accumulator
-        // otherwise use the first non-empty element as the accumulator
-        if(arguments.length > 1){
-            accumulator = initialValue;
-        }
-        else{
-            // find the first non-empty element in the array 
-            while(startIndex <  this.length && !(startIndex in this)){
-                startIndex++
-            }
-            // if the array is empty or contains only empty slot throw an error
-            if(startIndex >= this.length){
-                throw new TypeError('reduce of empty array with no iniital value')
-            }
-            // used the first non-empty element as the initial accumulator value
-            accumulator = this[startIndex]
-        }
+//return the  final accumulated value after processing all array elements.
 
-        // iterat over the array and apply the callback functon
-        for(let i=startIndex;i<this.length;i++){
-            if(i in this){
-                accumulator = callback(accumulator, this[i],i,this)
-            }
-        }
-        return accumulator;
+
+
+
+Array.prototype.myReduce = function(callback , initialValue){
+    var accumulator = initialValue;
+    for(let i=0;i<this.length ;i++){
+        // here if you not give initial value to the accumulator then it give first element value as default value and current element are 2 element
+        accumulator = accumulator ? callback(accumulator, this[i], i, this) : this[i]
     }
+    return accumulator
+}
 
-    const numbers = [1, 2, 3, 4];
-const sum = numbers.myReduce((acc, currentValue) => acc + currentValue, 0);
-console.log(sum); // Output: 10
+const numbers = [1, 2, 3, 4, 5];
+// const sum = numbers.myReduce((accumulator, currentValue) => accumulator + currentValue, 0);
+const sum = numbers.myReduce((accumulator, currentValue) => accumulator + currentValue); // here i have remove the initial value the it tack first element as initial value
+console.log(sum); // Output: 15

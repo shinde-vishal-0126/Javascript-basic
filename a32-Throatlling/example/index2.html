@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      section {
+        height: 200vh; /* Make the section taller than the viewport to allow scrolling */
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body onscroll="showCount()">
+    <section>
+      <p id="normal">normal count: 0</p>
+      <p id="throttle">throttle count: 0</p>
+    </section>
+
+    <script>
+      const normal = document.querySelector("#normal");
+      const throttle = document.querySelector("#throttle");
+
+      let nCount = 0;
+      let tCount = 0;
+      let isScroll = true;
+
+      const normalCount = () => {
+        nCount++;
+        normal.innerHTML = `normal count: ${nCount}`;
+      };
+
+      const throttleCount = () => {
+        if (isScroll === true) {
+          tCount++;
+          throttle.innerHTML = `throttle count: ${tCount}`;
+          isScroll = false;
+          setTimeout(() => {
+            isScroll = true;
+          }, 100);
+        }
+      };
+
+      //   // also you have to defined function in following way
+      //   const throttleFunction = (fun, delay) => {
+      //     let functionShouldCall = true;
+      //     return function (...args) {
+      // if(!functionShouldCall) return;
+      //       fun(...arg);
+      //       functionShouldCall = false;
+
+      //       setTimeout(() => {
+      //         functionShouldCall = true;
+      //       }, delay);
+      //     };
+      //   };
+
+      const showCount = () => {
+        throttleCount();
+        normalCount();
+      };
+    </script>
+  </body>
+</html>
