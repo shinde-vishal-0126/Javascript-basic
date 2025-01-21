@@ -1,48 +1,36 @@
-// PROTOTYPE
+//| Prototype 
 
-// prototype is an object that contains properties and methods that are shared among all instances of a particular object. Prototypes are used to implement inheritance and extend the functionality of objects.
-//  JavaScript, a prototype is an object that provides properties and methods to other objects.
-//  This is a fundamental concept of JavaScript's inheritance model,known as prototype-based inheritance.
-//  prototype is an object associated with every function and object by default in javascript 
-//  Every function include prototype object by default 
+// in javascript prototype provide the mechanism for sharing properties and method across instances.
 
-//  basically prototype allow for inheritances 
-// so that objects can inherits the properties and method from there parent object
-
-// so this is useful for creating a hierarchy of objects where parent objects defined common properties and method
-// that are shared by all of its child objects
-
-// example
-//  Date objects inherit from Date.prototype 
-//  Array objects inherit from Array.prototype
-
-//  The Object.prototype is on the top of the prototype inheritance chain:
-//  Prototype is a special hidden property in JavaScript objects,
-//  each object can access its prototype through __proto__ .
-//  The prototype itself is an object, so it also has its own prototype.
-//  prototype allows you to add new properties and methods to arrays.
-//  prototype is a property available with all JavaScript objects.
+// prototype is an object it is associated with every function and object in javascript  by default ;
+// it allow for the inheritances of  properties and method across different objects.
 
 
-//  Prototype Object:
-//  Every JavaScript function has a prototype property that is used 
-// when the function is used as a constructor. 
-// The prototype property is an object that defines properties and methods that will be shared by all instances created by that constructor.
+//! prototype fo Function :
+// every javascript function has special property call as prototype 
+// this prototype is object that contain method and properties that will be shared all instances created using the function 
 
+//! prototype chain:
+// javascript object has hidden internal property called as [[prototype]] ==> which refer to the another object (i.e its prototype)
+// if you try to access property or method of an object javascript will first check the object itSelf if it does not found property it look into chain of prototype  (known as prototype chain) until its find the property or reaches to end of the chain (null)
 
-//  Prototype Chain:
-//  Objects in JavaScript inherit properties and methods from their prototype.
-//  When a property or method is not found on an object, JavaScript looks up the prototype chain to find it.
-//  This chain continues up to Object.prototype, the ultimate prototype object.
+//! Built in object like array, object and function 
+// this also having prototype object as well 
 
+// ! chaining the prototype :
+// You can also modify the prototype of an object or function to add new methods or properties dynamically.
 
-// Object.prototype: 
-            // The default prototype object from which all other prototypes inherit. 
-            //It provides methods like toString, hasOwnProperty, etc., to all objects.
+//! __proto__
+// __proto__ is a special property (an internal property) that exists on all objects. It is used to refer to an object's prototype, or the object from which it inherits properties and methods
+// hough it has been largely replaced by Object.getPrototypeOf() and Object.setPrototypeOf() in modern JavaScript, __proto__ is still supported in most environments and can be used to access or modify the prototype of an object.
 
-// Function.prototype: 
-            // The prototype object of all functions.
-            //  It includes methods like apply, call, and bind.
-
-
-// function's prototype property is accessible and modifiable and object's prototype property is not visible.
+const person = {
+    name: 'Alice'
+  };
+  const employee = {
+    job: 'Developer'
+  };
+  
+  person.__proto__ = employee;
+  console.log(person.job); // Output: Developer
+  

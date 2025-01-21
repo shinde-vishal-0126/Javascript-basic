@@ -1,5 +1,4 @@
 //! event propagation
-
 // event propagation refer to process of how event are propagated or travel through throw the DOM (document object model) hierarchy
 // Event propagation is a way to describe the stack of events that are fired in a web browser.
 // Event propagation in the DOM describes how events move through the HTML element hierarchy when an event is triggered.
@@ -8,16 +7,15 @@
 // It determines the order in which event handlers are triggered for nested elements.
 // event propagation is crucial for managing and handling event in complex web application
 // Event Propagation mode determines in which order the element receives the event
-
 // 2 phase of event propagation
 // 1. capturing phase
 // 2. bubbling phase
 // 3. target phase
 
+
 //? what is event capturing phase ?
 // it is an event occurs form top to Bottom
-// The event start from the root of the DOM and goes down to the target element
-// handlers registered for the capturing phase are executed
+// The event start from the root of the DOM and goes down to the target element handlers registered for the capturing phase are executed
 //! The event starts at the root of the DOM tree and propagates downward through the parent elements until it reaches the target element.
 // In this phase, the browser checks if any ancestor(grandparent) elements (starting from the top) have event handlers that should be triggered.
 // So by default the event bubbling process happen but another process is called as capturing which make the event execution process top to bottom
@@ -31,8 +29,7 @@
 
 //?  What is Event bubbling phase ?
 //  It is an event that occurs from  Bottom to top.(event bubbling is make the event execution process bottom to top)
-//! The event start from the target element to bubble up to the root of the DOM
-// handlers registered for the bubbling phase are executed
+//! The event start from the target element to bubble up to the root of the DOM handlers registered for the bubbling phase are executed
 //  After the event reaches the target element, it propagates back up (or "bubbles") through its ancestors until it reaches the root again
 //  Any event handlers attached to these ancestor elements will be triggered in this phase.
 //  With event bubbling the event is first captured and handled by the innermost element and then propagated to outer element

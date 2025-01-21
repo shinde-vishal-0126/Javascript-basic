@@ -1,8 +1,17 @@
-// async-await :
-// - Then to handled the asynchronous operation or promise used modular approach like async-await.
-// The async and await keywords in JavaScript provide a more concise and readable way to work with asynchronous operations, compared to using Promises alone. They make your asynchronous code look like synchronous code, simplifying its structure.
+//| async-await :
 
-// The async keyword is used to define an asynchronous function. An async function always returns a Promise, even if you don’t explicitly return one. If you return a value, it’s automatically wrapped in a Promise.
+// Then to handled the asynchronous operation or promise used modular approach like async-await.
+// The async and await keywords in JavaScript provide a more concise and readable way to work with asynchronous operations, compared to using Promises alone. 
+// They make your asynchronous code look like synchronous code, simplifying its structure.
+//It is used to define a function as asynchronous.
+// An async function always returns a Promise.
+// If a value is returned from an async function, it is automatically wrapped in a resolved Promise.
+// If an error is thrown in an async function, it returns a rejected Promise.
+
+//* The async keyword is used to define an asynchronous function.
+//  An async function always returns a Promise, 
+// even if you don’t explicitly return one. If you return a value, 
+// it’s automatically wrapped in a Promise.
 
 //Example:
 console.log('start');
@@ -41,9 +50,8 @@ const result = async () =>{
 }
 result();
 
-// *  How to handled the error in async-wait
+//? How to handled the error in async-wait
 // handled error using try, catch, and finally block
-
 const res = async () =>{
     try{
         const msg1 =await importantAction('vishal');
@@ -58,7 +66,8 @@ const res = async () =>{
 res()
 
 
-// * output based question
+
+//? output based question
 
 // 1
 const promise = new Promise((res, rej)=>{
@@ -86,7 +95,9 @@ console.log('result :' , res)
 });
 console.log('end'); 
 
-// console.log('start'); //start
+
+// 3
+console.log('start'); //start
 const fn = () => {
     return new Promise((resolve, reject) => { // Return the Promise here
         console.log(1);
@@ -102,44 +113,48 @@ console.log("end");
 
 
 
-
-// Advantages of async and await
-// Improved Readability: Makes asynchronous code easier to read and maintain.
+//? Advantages of async and await
+// Improved Readability: Makes asynchronous code easier to read and maintain. compared to traditional callback-based or promise-based approaches.
 // Sequential Flow: Helps write asynchronous code in a way that resembles synchronous code.
-// Error Handling: Uses try...catch for better error handling compared to .catch() in promises.
+// Error Handling: async/await works seamlessly with try/catch blocks for error handling, providing a more intuitive way to manage errors in asynchronous code.
+    // This is much simpler and cleaner than chaining .catch() in promise chains.
 // Combining Async Tasks: Easily combine sequential and parallel tasks.
+// Sequential Execution: With async/await, asynchronous operations can be written sequentially, avoiding deeply nested callbacks. However, each await waits for the previous one to resolve before moving on.
+// Parallel Execution: You can still run asynchronous operations in parallel by using Promise.all with async/await, improving performance when tasks are independent
 
 
 
-// What is differences between promise and async / wait 
+
+//? What is differences between promise and async / wait 
 // Both are used for the handling the asynchronous operation in javascript
+
 //! Promise 
 // Basically promise used chaining syntax with .then() and .catch() to handled the asynchronous operation
 // You defined a function that return a promise and then you chain  .then() callback to handled successful result 
 // And .catch() when the promise are rejected then used to handle error 
-// someAsyncFunction()
-    // .then((result)=>{
-        //handled success
-    // }).catch((error)=>{ 
-       
-    // })
+someAsyncFunction()
+    .then((result)=>{
+        // handled success
+    }).catch((error)=>{   
+    })
 
-// Error Handling 
+//* Error Handling 
 // So error handling in promise are typically handled using the .catch() method or by changing the second .then() callback for error handling
 // So this can be lead to callback hell if you have multiple asynchronous operation 
-// Readability
+//* Readability
 // Promise can nested and harder to read when dealing with multiple asynchronous operation 
-// Error propagation :
+//* Error propagation :
 // Error in promise chain need to explicitly passed using return promise.reject(error) which an be porn to omission 
-// Compatibility : so promise available in most modern javascript environment and it can be used in older environment with the help of polyfill
+//* Compatibility :
+//  so promise available in most modern javascript environment and it can be used in older environment with the help of polyfill
 
 
-// Async/wait :
+//! Async/wait :
 // async/  it is more synchronous looking syntax for handling promise
 // So you make function as async and used await keyword inside it to wait for a promise to resolved 
 // And handled the error using the try-catch block
 
-// async wait
+//* async wait
 // make function as async
 async function Function(){
     // handled the error try catch block
@@ -151,28 +166,59 @@ async function Function(){
     }
 }
 
-// Error Handling 
+//* Error Handling 
 // In async/await handle the error using traditional way by using the try catch () block 
 // Making error handling more intuitive and similar to synchronous code 
-// Readability
+//* Readability
 // Can significantly improve the code readability and maintainability especially dealing the more complex asynchronous code 
-// Error propagation
+//* Error propagation
 // In async await error are automatically propagated up to call stack making it easier to tracking and handled them  
-// Compatibility : relies on promises so it is not available in the environment it did not support, only support in the modern environment. 
+//* Compatibility :
+//  relies on promises so it is not available in the environment it did not support, only support in the modern environment. 
+
+
+// differences in short!
+//! promise
+// Basic Syntax with .then() and .catch()
+// - A promise is created using the new Promise() constructor.
+// -  You handle the result or error using .then() for success and .catch() for errors.
+// error-handling :
+// - In Promises, you use .catch() for handling errors.
+
+// Promises often require chaining .then() calls for sequential operations, which can get cumbersome.
+
+
+// !2 async-await
+// Basic Syntax with async and await
+//- async is used before a function definition to indicate that the function contains asynchronous operations.
+// - await is used inside an async function to wait for the resolution of a promise, simplifying the syntax.
+// error handling :
+// - in async-await used the try and catch block for handling error
+// async/await allows you to write sequential code, making it easier to follow.
 
 
 
 
 
-// Why used the async/ await instead of promise 
+
+
+//? Why used the async/ await instead of promise 
 // Async / await can greatly improve the readability of the asynchronous code compared to using callback and .then chaining when dealing with promise
 // So async/await allow you to write asynchronous more synchronous style making it easier to understand and maintain
 
+// Problems with Promises:
+//! Chaining Can Get Messy: 
+// When you have multiple Promise calls, it’s easy for the code to become deeply nested, and that makes it hard to read and follow. This is called "callback hell."
+// Error Handling Is Tricky: 
+// In promises, you need to handle errors with .catch() at the end of each chain. This can get confusing when there are many steps in your code.
 
-// Summary about Async await 👍
+// async/await is like fixing the messiness and confusion of promises, making your code simpler and more manageable. because of  No need for chaining .then() and .catch(), also Error Handling: Just use try/catch blocks, making it much simpler, Easier to Read: Looks like regular code and not a bunch of nested callbacks.
+
+
+//? Summary about Async await 👍
 // Async await makes promises easier to write and makes complexity simple.
 // Async make a function return promise 
-// Await makes a function wait from  promise.
+// Await makes a function wait from  promise are settled to be resolved or rejected .
 // If you used fetch method it always async await return
 // If you define an async function it always contains await.
 // If you used async and await by default provided error handling.
@@ -180,16 +226,14 @@ async function Function(){
 
 
 
-// Error Handling in await / async 
+//! Error Handling in await / async 
 // A promise resolve the await promise return the result if a promise rejected await/async throw an error so if there were throw statement
 async function getUser(userId){
     await Promise.reject (new Error('invalid user Id'))
 }
-
 async function getUser(userId){
     throw new Error('invalid user id')
 }
-
 async function getUser(userId){
     try{
         const user = await Promise.reject(new Error('invalid user id '));
@@ -212,9 +256,7 @@ async function showServices(){
 
 
 
-// Await keyword 
-
-
+//! Await keyword 
 // Used the await keyword to wait for the promise to stalled either in resolved and rejected state 
 // And you can used await keyword inside async function only
 // It used before the promise and it pause the function execution until the promise is resolved (fulfilled or rejected )
@@ -227,12 +269,11 @@ async function example(){
         console.log(error)
     }
 }
-
 // Now in this above example await keyword instructs the javascript engine to wait for the sayHi() function to complete before displaying the message.
 // If you use the await operator outside the async function it gets an error.
 
 
-// The async keyword 
+//! The async keyword : 
 // The async keyword allow you to defined a function that handled asynchronous operation
 // To defined the async function you place the async keyword in front of function keyword as follow
 // When you declare a function as async it means that function always return the promise either explicitly or implicitly 
@@ -243,7 +284,6 @@ async function fetchData(){
     return data;
 }
 // New example explanation
-
 async function  sayHi(){
    return Promise.resolve ('hi');
 }
@@ -251,6 +291,7 @@ async function  sayHi(){
 sayHi().then((console.log))
 // Asynchronous functions execute asynchronously vai the event loop
 // It alway returns a promise.
+
 
 Example : 
 // sayHi()  function returns the promise  you can consume it .
@@ -263,15 +304,14 @@ let sayHi = async function(){
     return 'hi'
 }
 
+
 // Arrow function
 // arrow function
 let sayHi = async () => 'Hi'
 
 
 
-
-
-// What introduced the async await in javascript instead of the promise ?
+//? Why introduced the async await in javascript instead of the promise ?
 // Promise chaining is the technique  for handling the asynchronous operation sequentially using promise 
 // While its a powerful and versatile approach there are some common problem and challenges associated with it 
 // Callback Hell (Pyramid of Doom ):
@@ -286,21 +326,21 @@ asyncFunction().then((result1)=>{
     })
 // })
 
-// Error Handling 
+//! Error Handling 
 // Proper error handling in promise chain can be challenging error that occur at any stage in the chain can be caught in the .catch() block at the end making it difficult to pinpoint where the exactly error occurred 
-// Readability and maintainability 👍
+//* Readability and maintainability 
 // Promise chain can be difficult to read and maintain as they grow in length 
 // It easy to lose the track of the flow of the code especially you have multiple .then() block
-// Inflexibility 
+//* Inflexibility 
 // Changing the order or adding new step to sequence of asynchronous operation  can require significant modification to the existing promise chain  ao potentially introducing the bug 
-// Limited parallelism 
+//* Limited parallelism 
 // Promise chaining is inherently sequential which means that operation in the chain are executed one after the another if you have independent synchronous task that could be run in parallel so promise changing is not be the most efficient approach  
 // So conclusion is the address this challenges and make code more readable and maintainable modern javascript introduced the async/await 
 // So async wait provide better error handling, improve the readability and greater flexibility in managing the asynchronous operation 
 
 
 	
-// async/await:
+//! async/await:
 // Learn how to write asynchronous code using javascript async and await.
 // In the past you deal with asynchronous operation you often used callback function 
 // However when you nested many callback functions the code will be more difficult to maintain and you end up with a notorious issue known as call back hell.
@@ -390,7 +430,6 @@ getUser(100).then(getServices).then(getServicesCost).then(console.log)
 // Await will wait for the promise returned from the f() to settled 
 // The await keyword used only inside the async function
 
-
 function getUser(userId){
     return new Promise((resolve, reject)=>{
         console.log(`get user form the database`);
@@ -421,7 +460,6 @@ function getServicesCost(services){
         })
     },3* 1000)
 }
-
 // here you have to chain the promise
 // getUser(100).then(getServices).then(getServicesCost).then(console.log)
 //Instead of that Following defined an async function that call the three asynchronous operation in sequence 

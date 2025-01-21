@@ -21,7 +21,10 @@ Array.prototype.myReduce = function(callback , initialValue){
     var accumulator = initialValue;
     for(let i=0;i<this.length ;i++){
         // here if you not give initial value to the accumulator then it give first element value as default value and current element are 2 element
+
+        // If accumulator is defined  the callback function is called with the current accumulator, the current element this[i], the index i, and the array itself this.
         accumulator = accumulator ? callback(accumulator, this[i], i, this) : this[i]
+        //If accumulator is undefined (which happens when no initialValue is provided), the first element of the array (this[i]) is set as the accumulator, and no callback is invoked for the first element.
     }
     return accumulator
 }

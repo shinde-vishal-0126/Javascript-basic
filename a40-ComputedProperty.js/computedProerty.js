@@ -32,7 +32,7 @@ class Person {
 let per = new Person('vishal','shinde');
 console.log(per.fullName);
 
-// NOTE 
+//! NOTE 
 // computed property allow you to use the value of expression as the property name of the object 
 
 
@@ -44,3 +44,5 @@ const user = {
   [`${prefix}${id}`]: 'John Doe'
 };
 console.log(user.user_123); // John Doe
+
+

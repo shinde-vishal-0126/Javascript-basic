@@ -1,8 +1,8 @@
-// promise.allSettled() :
-// -  Having the same syntax like Promise.all and promise.race but functionality is a bit different.
-// - It work like exactly promise .all but even only one of the promise failed it gone return all of the promise that are fulfilled as well 
-//-  In promise.all if any on of the Promise are failed then it filed all the promise.all()
-// - Promise.allSettled() any one promise failed then it return all of these array item so like fulfilled or rejected
+//? promise.allSettled() :
+// Having the same syntax like Promise.all and promise.race but functionality is a bit different.
+// It work like exactly promise .all but even only one of the promise failed it gone return all of the promise that are fulfilled as well 
+// In promise.all if any on of the Promise are failed then it filed all the promise.all()
+// Promise.allSettled() any one promise failed then it return all of these array item so like fulfilled or rejected
 
 console.log('start');
 function importantAction(user_name){

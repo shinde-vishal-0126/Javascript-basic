@@ -1,28 +1,23 @@
 
-//|WHAT IS SYNCHRONOUS AND ASYNCHRONOUS
-
-
+//# WHAT IS SYNCHRONOUS AND ASYNCHRONOUS
 // javascript execute synchronous code first and then execute asynchronous code
+// - synchronous code execute line by line, blocking further execution until each line is complected 
+// - while asynchronous code allow other code to continue executing while it wait for an asynchronous
 
-
-// ! synchronous code execute line by line, blocking further execution until each line is complected 
-// while asynchronous code allow other code to continue executing while it wait for an asynchronous
-
-//| synchronous :
+// - synchronous :
 //  code executed line by line
-//! synchronous are Blocking architecture (Synchronous code blocks the execution of subsequent code until the current task is finished.)
-//!  so the execution of each task is depends on the completion of the one before it
-// 4 task can be run serial
+// synchronous are Blocking architecture (Synchronous code blocks the execution of subsequent code until the current task is finished.)
+//  so the execution of each task is depends on the completion of the one before it
+//  task can be run serial
 // i.e each instruction wait for previous instruction to be complete its execution
 // Due to nature of synchronous programming some time important instruction get blocked due to some pervious instruction which case delay the user interface.
 //Tasks are executed one after another in a sequential manner. Each operation must complete before the next one begins.
-
-//! Example 1
+// Example 1
 console.log('start');
 console.log('subscribed to the coder')
 console.log('end');
 
-//! Example 2 
+// Example 2 
 const fun2 = ()=>{
     console.log('function two is called')
 }
@@ -36,10 +31,10 @@ fun1()
 
 
 
-//| Asynchronous 
+//- Asynchronous 
 // code executed parallel
-//!Tasks can start but may not finish immediately, allowing other tasks to execute while waiting for slower tasks
-//! asynchronous are non-blocking architecture ( Asynchronous code does not block the execution of subsequent code. Instead, it uses mechanisms like callbacks, promises, or async/await to handle completion.)
+//Tasks can start but may not finish immediately, allowing other tasks to execute while waiting for slower tasks
+// asynchronous are non-blocking architecture ( Asynchronous code does not block the execution of subsequent code. Instead, it uses mechanisms like callbacks, promises, or async/await to handle completion.)
 // execution of one task not dependent on another
 // task can run simultaneously
 // Javascript can start long-running tasks and continue running tasks in parallel.
@@ -60,6 +55,7 @@ const fun4 = () =>{
 }
 fun4()
 
+
 // Javascript single threaded language and it can not execute this settimeout in parallel as our code being executed 
 // So this go & execute all synchronous code then executed asynchronous code so setTimeout part of the weApis
 // So we are using setTimeout to simulate an asynchronous process
@@ -74,8 +70,6 @@ fun4()
 // Display spinner
 // When the data is available , display it on the webpage
 // So to do this above things javascript engine used an event loop.
-
-
 
 
 // example :
@@ -94,7 +88,6 @@ console.log('stop')
 
 // useful
 // The method console. dir() displays an interactive list of the properties of the specified JavaScript object
-
 const person = {
     name: "John",
     age: 30,

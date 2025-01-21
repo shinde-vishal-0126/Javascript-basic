@@ -9,42 +9,28 @@ function purChanCar(currency, price){
 console.log(`i have punchedCar ${this.company} car with color ${this.color} and price are ${currency} ${price}`)
 }
 
-// purChanCar.call(car,"$",90)
 
-// now lets create polyfill of teh call() method 
-// first call method take two argument first one is context like object and 2nd argument as individual argument 
-// so lets create function
-
-// Function.prototype.myCall = function (context={} ,...args) {
-//     // then check call method calling are the type of function or not 
-//     if(typeof this !== 'function'){
-//         throw new Error(this + "this function are not callable...")
-//     }
-
-//     context.fn = this;
-//     context.fn(...args)
-// };
-
-
-// Define a custom 'myCall' method on Function.prototype
-Function.prototype.myCall = function(context = {}, ...args) {
-    // Check if 'this' is a function (only functions can be called using 'call')
+Function.prototype.myCall = function (context = {}, ...args) {
+    // Default Context: If no context is provided, a default empty object {} is used to avoid errors.
+    // Check if 'this' is a function, as myCall can only be called on functions
     if (typeof this !== 'function') {
-        throw new Error(this + " is not callable"); // Throw an error if not a function
+        throw new Error(this + ' is not callable'); // Throw an error if 'this' is not a function
     }
 
-    // Assign the context object if none is provided (default to an empty object)
-    context.fn = this; // Temporarily assign 'this' (the function) as a method of the context object
+    // Assign the function (which 'this' refers to) to a property on the context object
+    // This allows us to call the function with the provided context
+    context.fun = this;
 
-    // Call the function using the context object and spread the arguments
-    const result = context.fn(...args); // Invoke the function with the provided arguments
-    // Clean up by removing the temporary method from the context object
-    delete context.fn;
+    // Call the function using the context object and the provided arguments
+    // The function will execute with 'context' as 'this', and 'args' as the parameters
+    const result = context.fun(...args);
+
+    // Remove the temporary 'fun' property from the context object
+    // This cleanup is important to avoid polluting the context object
+    delete context.fun;
 
     // Return the result of the function call
     return result;
-};
-
-
+}
 
 purChanCar.myCall(car,"$",90)

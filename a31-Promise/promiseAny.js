@@ -1,6 +1,6 @@
-// Promise.any();
-// - It exactly like promise.race but what it does it 
-// - It only returns the first fulfilled promise and ignores all the rejected promises.
+//? Promise.any();
+// It exactly like promise.race but what it does it 
+// It only returns the first fulfilled promise and ignores all the rejected promises.
 console.log('start');
 function importantAction(user_name) {
     return new Promise((resolved, reject) => {
@@ -32,5 +32,6 @@ Promise.any([importantAction('vishal'),likeVideo('node js'),sharedVideo('javascr
     console.log('cleanup code')
 })
 // If all promises are rejected, it throws an AggregateError, which contains all the rejection reasons
-// Promise.any() takes an array of promises and returns a new promise that resolves as soon as any one of the promises resolves. If all promises reject, the resulting promise rejects with an AggregateError that contains all the reasons for rejection.
+// Promise.any() takes an array of promises and returns a new promise that resolves as soon as any one of the promises resolves. 
+// If all promises reject, the resulting promise rejects with an AggregateError that contains all the reasons for rejection.
 

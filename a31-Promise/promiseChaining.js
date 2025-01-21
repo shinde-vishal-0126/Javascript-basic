@@ -1,7 +1,11 @@
-// promise chaining :
-// 1. Javascript chaining pattern that chain the promises to execute asynchronous operation in sequences.
-// Def:
-// Sometimes you want to execute two or more related asynchronous operations where the next operation starts with the result from the previous step.
+//? what is promise chaining
+
+// Promise chaining is a technique in JavaScript where multiple asynchronous operations are performed in sequence, with each subsequent operation starting only after the previous one has completed.
+//  This is achieved by returning a new promise from the .then() handler of the previous promise.
+
+//*  promise chaining :
+// Javascript chaining pattern that chain the promises to execute asynchronous operation in sequences.
+// Def:Sometimes you want to execute two or more related asynchronous operations where the next operation starts with the result from the previous step.
 const firstPromise = new Promise((res, rej)=>{
     res('first')
 })
@@ -14,8 +18,6 @@ secondPromise.then((result)=>{
 }).catch((error)=>{
     console.log(error)
 })
-
-
 
 
 // Example 2 :
@@ -68,11 +70,22 @@ importantAction('shinde').then((res)=>{
     console.log('new error', err);
 }) //  after one promise resolved  we have to defined another promise
 
-// Why do we call promise chaining ?
-// 1. We call it promise chaining because it involves executing a series of asynchronous tasks in sequence,
+//? Key Points of promise chaining:
+// Sequential Execution: Each operation in the chain depends on the result of the previous operation.
+// Error Handling: If any promise in the chain is rejected, the chain skips subsequent .then() handlers and executes the nearest .catch() block.
+// Cleaner Syntax: Promises make the code more readable and manageable, avoiding deeply nested callbacks (commonly known as "callback hell").
+
+// means
+// Structured Asynchronous Flow: Clearly defines the sequence of operations.
+// Error Handling: Centralized error handling through .catch().
+// Readability: Easier to understand and maintain compared to nested callbacks.
+
+
+//? Why do we call promise chaining ?
+// We call it promise chaining because it involves executing a series of asynchronous tasks in sequence,
 // where each task depends on the result of the previous one. By "chaining" .then() methods, each promise is linked or "chained" to the one that precedes it, ensuring that the tasks execute in order.
 
-// Key Reasons for Promise Chaining:
+//* Key Reasons for Promise Chaining:
 // Sequential Execution: In promise chaining, each asynchronous operation runs only after the previous one completes. 
 //This creates a clear sequence of dependent operations, unlike parallel execution where tasks can run independently.
 // setTimeOut() function simulate an asynchronous operation
@@ -98,11 +111,13 @@ p.then((res)=>{
 //  In a promise chain, you can catch errors in one place rather than handling them individually for each asynchronous operation. The catch block at the end of the chain handles any errors that occur in any of the previous promises in the chain.
 
 //? How Promise Chaining Works:
-// When a .then() block is attached to a promise, it returns a new promise. If the handler function in .then() returns a value, that value becomes the resolution value of the new promise. If it returns another promise, the chain waits for that promise to resolve before continuing.
+// When a .then() block is attached to a promise, it returns a new promise.
+//  If the handler function in .then() returns a value, that value becomes the resolution value of the new promise. 
+// If it returns another promise, the chain waits for that promise to resolve before continuing.
 
 // !NOTE
-//1. Also by using  promise chains we have like this code pretty lengthy so that we have one more approach in promise which is called as Promise combinator.
-// 2 .When you call then() method multiple time on promise is is not promise changing 
+// Also by using  promise chains we have like this code pretty lengthy so that we have one more approach in promise which is called as Promise combinator.
+// When you call then() method multiple time on promise is is not promise changing 
 let p1 = new Promise((res,rej)=>{
 setTimeout(()=>{
     res(10)
@@ -121,8 +136,7 @@ p1.then((res)=>{
     return res * 4
 })
 // In this example we have multiple handler for one promise. This handler has no relationship. Also they execute independently and don't pass the result from one to another like the promise chain above.
-
-// Returning a promise 
+//* Returning a promise 
 // When you return value in the then() method the then method returns a new Promise that immediately resolves to the return 
 // you also return new promise in the then method
 
@@ -161,8 +175,8 @@ p3.then((result)=>{
 
 // Example : 
 // The following function illustrates the three synchronous operations ?
-// -suppose that you want to perform the following asynchronous operation sequentially.
-// -get the user from the database
+// suppose that you want to perform the following asynchronous operation sequentially.
+// get the user from the database
 // Get the services of the selected user
 // Calculate the services cost of the user  
 
@@ -204,14 +218,13 @@ getUser(100).then((result)=>{
 }).catch((error)=>{
     console.log(error)
 })
-
 // also used following approach
 getUser(100).then(getServices).then(getServicesConst).then((result)=>{
     console.log('result1234',result)
 })
 
 
-// ==> output based question:
+//! output based question:
 // 1.
 function job(){
     return new Promise((res,rej)=>{
@@ -232,6 +245,7 @@ promise.then(()=>{
             console.log('success4')
         })
     
+
 // 2. 
 function job(state){
     return new Promise((resolve,reject)=>{

@@ -1,5 +1,5 @@
 
-//| ES6 -2015
+//? ES6 -2015
 
 // let and const
 // template literal
@@ -25,7 +25,6 @@
 // rest/spread operator
 // promise.prototype.finally();
 
-
 // ES10 - 2019
 // Array.prototype.flat()
 // Array.prototype.flatMap();
@@ -34,7 +33,6 @@
 // Optional catch binding
 // string.prototype.trimStart();
 // string.prototype.trimEnd();
-
 
 //ES11 2020
 //! BigInt BigInt in javascript is a data type used to represent and perform operation on large integers that exceed the limits of regular numbers

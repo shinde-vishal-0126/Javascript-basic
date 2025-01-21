@@ -50,33 +50,40 @@
         normal_count++;
         n_count.innerHTML = `Normal Count: ${normal_count}`;
       };
-
-
+      
       const throttle = (func, delay) => {
+        // Initialize lastCall to track when the function was last executed
         let lastCall = 0;
+
+        // Return a function that will be called on each event (e.g., scroll, resize, etc.)
         return function (...args) {
+          // Get the current time in milliseconds
           const now = new Date().getTime();
+
+          // Check if enough time has passed since the last function call
           if (now - lastCall >= delay) {
+            // If enough time has passed, update lastCall to the current time
             lastCall = now;
+
+            // Execute the provided function with the given arguments
             func(...args);
           }
-
         };
       };
 
-    //   // also you have to defined function in following way
-    //   const throttleFunction = (fun, delay) => {
-    //     let functionShouldCall = true;
-    //     return function (...args) {
-            // if(!functionShouldCall) return;
-    //       fun(...arg);
-    //       functionShouldCall = false;
+      //   // also you have to defined function in following way
+      //   const throttleFunction = (fun, delay) => {
+      //     let functionShouldCall = true;
+      //     return function (...args) {
+      // if(!functionShouldCall) return;
+      //       fun(...arg);
+      //       functionShouldCall = false;
 
-    //       setTimeout(() => {
-    //         functionShouldCall = true;
-    //       }, delay);
-    //     };
-    //   };
+      //       setTimeout(() => {
+      //         functionShouldCall = true;
+      //       }, delay);
+      //     };
+      //   };
 
       const throttleCount = throttle(() => {
         throttle_count++;

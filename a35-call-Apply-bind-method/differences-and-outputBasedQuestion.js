@@ -12,6 +12,8 @@
 // return new function that can be call later
 //  Accept argument individually but does not invoked function immediately
  
+
+
 //| output based question
 // !ex
 const person = {
@@ -68,14 +70,16 @@ for(let i=0;i<animal.length;i++){
  // by using apply method 
  array.push.apply(array,array2)
  console.log(array)
+ 
 
  // using apply method enhances the built in function like Math.max
  let arr = [10,20,30,40,50];
+
  console.log(Math.max(arr)) ; // it return NaN because Max method require individual element not array of element
 //  like
 console.log(Math.max(...arr))
-// so using the apply method we have to enhance the built in method 
 
+// so using the apply method we have to enhance the built in method 
 console.log(Math.max.apply(null, arr))
 
 
@@ -90,6 +94,7 @@ user.g()
 //  return to the window object 
 
 
+
 // ! bind chaining
 function f() {
     console.log(this.name)
@@ -102,4 +107,4 @@ f(); // return vishal
 
 //| how to do call(), apply() and bind() method with arrow function:
 // we can not manipulate the the context of the arrow function  with the help of call() apply() and bind() method 
-// because arrow function does not have this context it refers to the widow object 
+// because arrow function does not have its own  this context it refers to the widow object 

@@ -25,8 +25,6 @@ const  hexCode = () =>{
 }
 
 
-
-
 const changeCode = ()=>{
      rgb = hexCode()
     console.log('rgb',rgb)

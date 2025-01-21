@@ -1,8 +1,15 @@
 
-//| First Class function :
+//! First Class function :
 
 //? what is first call function in javascript
-// in language function can be treated as variable  in this cases function can pass argument to another function and manipulate and return those functions when ever variable can do everything function can do.
+// JavaScript, a first-class citizen (also known as a first-class object or first-class function)
+// refers to entities that can be treated as values in the same way as other types like numbers, strings, and objects. 
+//n particular, functions are considered first-class citizens in JavaScript. This means that functions can:
+//1 Be assigned to variables
+//2 Be passed as arguments to other functions:
+//3 Be returned from other functions:
+//4 Be stored in data structures like arrays or objects:
+//* in language function can be treated as variable  in this cases function can pass argument to another function and manipulate and return those functions when ever variable can do everything function can do.
 //Def:
 //! the first call function means  that function can be treated as value, assigned to variable and passed around as arguments.( First-class functions when functions in that language are treated like any other value
 
@@ -37,7 +44,6 @@ DisplaySquare(square)
     // here function assign to the variable
     console.log('done')
  }
-
  //2 Function can be pass as an argument to other function 
 //You can pass function as an argument to another function 
 //that allowing for the creation of the higher order function that take function as input 
@@ -61,7 +67,6 @@ function multiply(factor){
     }
 }
 multiply(2)(4);
-
 // 4 function can be stored in data structure
 // also you have function stored in data structure like array or object
 

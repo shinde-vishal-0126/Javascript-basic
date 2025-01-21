@@ -1,10 +1,10 @@
-//| Higher order function 
+//? Higher order function 
 
 // A higher order function is a function that take one or more function as an arguments or return a function as result
 // Def: function which takes another function as an argument is called as HOF (Higher order function )
 // In javascript higher order function is super flexible function 
 
-//! It can do two special things so higher order function that either:
+//* It can do two special things so higher order function that either:
 // 1. Accept the another function as an argument 
 // So just like regular function number or string take as input or as an parameter or argument so just like higher order function take another function as an argument  
 // Think of it like a function that can invite another function to party.
@@ -57,10 +57,14 @@ const data = createAdder(5);
 const result = data(5);
 console.log('result', result)
 
-
-
 //? Why Use Higher-Order Functions?
 // Code Reusability: Encapsulate reusable logic in functions.
 // Abstraction: Makes code cleaner and more expressive.
 // Functional Composition: Combine small functions to build more complex behavior.
 // Callbacks and Promises: Essential for asynchronous programming (e.g., setTimeout, then in Promises).
+// Modularity and Composability
+// They help in breaking down complex logic into smaller, reusable pieces. By using higher-order functions, you can compose simpler functions into more complex ones, which promotes clean and modular code.
+// Avoiding Code Duplication
+// Since higher-order functions allow you to pass different behavior as arguments, you can avoid repeating similar code. For example, instead of writing a custom loop each time, you can use higher-order functions like map, filter, or reduce to handle collections in a consistent and declarative manner.
+// Improved Readability
+// Using higher-order functions can improve the readability of the code by expressing operations in terms of the functions that they execute. This is especially true when used with well-named functions (e.g., filter, map, compose).

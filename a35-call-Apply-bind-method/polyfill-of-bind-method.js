@@ -15,24 +15,25 @@ function purChanCar(currency, price) {
 //   newFunction();
 
 
-
-
-// polyfill of bind() method
-// take individual argument
 Function.prototype.myBind = function (context = {}, ...args) {
-  // check if the this is function (because only function are allow to call)
-  if (typeof this !== "function") {
-    throw new Error(this + "this function not callable...");
+  // First, check if 'this' is a function
+  // Bind can only be called on functions, so this ensures it's callable
+  if (typeof this !== 'function') {
+      throw new Error(this + ' are not callable'); // Throw an error if 'this' is not a function
   }
 
-  // Assign the context object if none is provided (default to an empty object)
-  context.fn = this;
-  // here bind() method return new function with given argument 
+  // this is assign a function to property of context object.
+  // Store the reference of the function in a temporary property on the context object
+  // This allows us to call the function with the specified context
+  context.fun = this;
 
-  return function (...newArg) {
-    // so bind method create exact copy of the give function and then execute with all give argument in later
-    context.fn(...args, ...newArg);
+  // Bind method returns a new function with the specified 'this' context
+  // This new function can be called later with additional arguments
+  return function (...next) {
+      // Call the original function using the context and both sets of arguments
+      context.fun(...args, ...next);
   };
-};
+}
+
 const newFunction = purChanCar.myBind(car);
 newFunction("$", 90);

@@ -1,4 +1,12 @@
 
+//? what is debounce 
+// - Debouncing in JavaScript is a programming pattern used to limit the rate at which a function gets executed.
+// Delays the execution of a function until after a certain period of inactivity.
+// It ensures that a function is not called too frequently, especially in response to rapidly occurring events such as window resizing, scrolling, or keypress.
+//! the debouncing work like
+// - Triggering Events: When an event occurs (e.g., a user typing in an input field), instead of calling the event handler immediately, debouncing waits for a specified period (delay) before executing the function.
+// Resetting Timer: If the event occurs again before the delay period ends, the timer resets.
+// - This way, the function only executes after the events have stopped firing for the specified delay period.
 // debouncing is way to optimize the (performances ) event handling in javascript or way
 // help to optimize how we called certain event in javascript 
 // ex. searchbox (Having the debouncing method (with display 400ms))
@@ -6,13 +14,17 @@
 // (or wait for certain amount of time before running it again)
 // it remove the unwanted noise form the inputs , searchbox and button
 // it limit the rate at which a function get invoked (or prevent extra activity or prevent slow function of triggering to often)
+// - Debouncing is especially useful in scenarios where controlling the frequency of function execution
 
+//! useCae
+// Performance Optimization: It reduces the number of function calls, especially useful for expensive operations like API requests or complex DOM manipulations.
+// Prevent Overloading: Helps avoid overwhelming the system with too many rapid-fire function executions.
 
+//* ex
 // when i pressed button x time the increase the count y every time when i stop the pressing the button and 
 // 800 ms  as debounced as passed.
 
 //Target each Dom element
-
 const button = document.querySelector('.increment_button');
 const pressedButton = document.querySelector('.pressed_button');
 const triggering = document.querySelector('.increment_count');
@@ -26,7 +38,7 @@ var triggered_count = 0;
 // only increment the triggered count (not every time we pressing the button)
 //solved this issue we have to used the debouncing 
 // to used debouncing we have to used the implementation of debouncing or also present the debounces function is
-// lodash library.
+//! lodash library.
 // syntax  .debounce(fun, [wait=0],[options={}])
 
 //here we have to create debounce function
@@ -41,19 +53,19 @@ button.addEventListener('click', () => {
     // call here debounces function
     debounce_function();
 })
-//Example :  when i go to search box and type something  then you can notice when i type and pause few millisecond and then only the search result updated 
+//*Example : 
+//when i go to search box and type something  then you can notice when i type and pause few millisecond and then only the search result updated 
 //When i continuously typing in the search bar it does not show the result when as soon as i stop for few millisecond then it makes and api call and then the fetch suggestion so this happen with the help of debouncing
 
 //we have SearchBox is  having debounces method with display of 400 ms and we typing one word after the another   like  (v i s h ) and this each word having the gap of 100 ms between them and while typing the extra word beyond 400 ms not the api call will be executed 
 //So as soon as we pause and mode another keystroke after sometime it is more than 400 ms let us it around 600 ms Vish  (400 ms )  __ al  → 600 ms When we pause this is movement where are action will be performed which in this case we need to call api in paused section so this is called as debouncing 
 
 
+//? which is better debouncing or throttling in javascript ?
+// based on the use case we have to defined which is better 
+// Whether debouncing or throttling is better depends entirely on your use case and the type of behavior you want to achieve
 
-
- //? which is better debouncing or throttling in javascript ?
-  // based on the use case we have to defined which is better 
-  // Whether debouncing or throttling is better depends entirely on your use case and the type of behavior you want to achieve
-  //! Choose Debouncing When:
+//! Choose Debouncing When:
 // You want the function to execute after the user stops performing the action.
 // Frequent triggering is unnecessary, and you only care about the final state.
 // Example Scenarios:
@@ -62,14 +74,14 @@ button.addEventListener('click', () => {
 // Resize/Scroll Handling: Recalculate layout only after resizing or scrolling has stopped.
 
 
-// Choose Throttling When:
+//! Choose Throttling When:
 // You need the function to execute at regular intervals during an ongoing action.
 // It’s important to update in near real-time, but not too frequently.
 // Example Scenarios:
 // Infinite Scroll: Load more content while the user scrolls but limit the rate of API calls.
 // Dragging/Slider: Update UI (e.g., position, value) at regular intervals while dragging a slider.
 // Analytics Tracking: Log user actions (e.g., scroll positions or clicks) without overwhelming the server.
-
+//!
 // Debouncing is generally better for actions triggered by user input because it minimizes unnecessary calls.
 // Throttling is better for performance-critical tasks that need periodic updates, such as animations or real-time logging.
 
@@ -85,46 +97,68 @@ button.addEventListener('click', () => {
 
 
 
-//?  Q what is differences between the DeBouncing and throttling 
-//  * debouncing and throttling are techniques used to control the frequency of function or optimize event execution.
 
-// Debouncing : 
-// -Wait for the certain time before invoking the function again 
-// -The purpose of debouncing is to delay the execution of a function until a pause in event occurrences
-// -It ensures that the function is only executed once after a series of rapid events.
-// -Debouncing is often used for scenarios like handling user input or scroll events, where you want to wait for a pause in input before triggering a function to avoid rapid, unintended executions.
-// -Debouncing is typically implemented by using a timer. 
-// -When an event occurs, a timer is started. If another event occurs before the timer elapses, the timer is reset
-// - The function is executed only when the timer finally expires, indicating a pause in event occurrences.
-// - Debouncing is concerned with ensuring that the function is only executed once, and it waits for a pause in event occurrences. It's about delaying execution until the events have stopped for a certain duration
-// - remove the unwanted noise form the input box, button 
-// - Ensures a function is executed only after a specified delay has passed since the last call.
-// - Ideal when you want to execute a function only after an action has stopped.
-// - The function executes only once, after the events have stopped firing for a delay period.
-// - Executes the function at the end of the delay period.
-// -  Auto-saving form data after the user stops typing.
-// - Validating an email field in a form.
-// - Delays the function execution until no further calls occur within the delay period.
-// - You want to trigger a search query only after the user has stopped typing in a search box for 300 milliseconds.
-// - Debouncing ensures the function is executed after a delay, useful for actions triggered after a pause.
+
+//?  Q what is differences between the DeBouncing and throttling 
+//!debouncing and throttling are techniques used to control the frequency of function or optimize event execution.(or optimize the performances of the application)
+
+//! Debouncing : 
+// Wait for the certain time before invoking the function again 
+// The purpose of debouncing is to delay the execution of a function until a pause in event occurrences after the specified period
+// It ensures that the function is only executed once after a series of rapid events.
+// Debouncing is often used for scenarios like handling user input or scroll events, where you want to wait for a pause in input before triggering a function to avoid rapid, unintended executions.
+// Debouncing is typically implemented by using a timer. 
+// When an event occurs, a timer is started. If another event occurs before the timer elapses, the timer is 
+
+// The function is executed only when the timer finally expires, indicating a pause in event occurrences.
+// Debouncing is concerned with ensuring that the function is only executed once, and it waits for a pause in event occurrences. It's about delaying execution until the events have stopped for a certain duration
+// remove the unwanted noise form the input box, button 
+// Ensures a function is executed only after a specified delay has passed since the last call.
+// Ideal when you want to execute a function only after an action has stopped.
+// The function executes only once, after the events have stopped firing for a delay period.
+// Executes the function at the end of the delay period.
+// Auto-saving form data after the user stops typing.
+// Validating an email field in a form.
+// Delays the function execution until no further calls occur within the delay period.
+// You want to trigger a search query only after the user has stopped typing in a search box for 300 milliseconds.
+// Debouncing ensures the function is executed after a delay, useful for actions triggered after a pause.
 
 
 // Throttling : 
-// - Limit the number of time the function can be called over the certain period 
-// - Ensure that the function is called only once if the event is triggered multiple time
-// - Throttling is used to limit the rate at which a function can be executed. It ensures that a function is called at a maximum frequency, regardless of how often the event occurs
-// - Throttling is commonly used for scenarios like rate-limiting API requests or preventing resource-intensive operations from overloading a system.
-// - Throttling can be implemented by allowing the function to execute at a fixed interval or rate
-// - For example, you may execute the function every 100 milliseconds. Any excess calls that occur within that interval are ignored until the next interval begins.
-// - Throttling focuses on limiting the rate at which a function is executed. It guarantees that the function is executed at a controlled pace and doesn't exceed a certain rate, regardless of how frequently the events occur
-// - Ensures a function is executed at most once in a specified time period.
-// - Ideal when you want to execute a function at regular intervals during a continuous action.
-// - The function executes periodically, at fixed intervals.
-// - Executes the function immediately and/or at regular intervals.
-// -  Handling window resize or scroll events.
-// -  API calls while dragging a slider.
-// - Limits the rate at which the function is called.
-// - Throttling controls the rate of function execution, useful for continuously updating actions.
+// Limit the number of time the function can be called over the certain period of time
+// Ensure that the function is called only once if the event is triggered multiple time
+// Throttling is commonly used for scenarios like rate-limiting API requests or preventing resource-intensive operations from overloading a system.
+// Throttling can be implemented by allowing the function to execute at a fixed interval or rate
+// For example, you may execute the function every 100 milliseconds. Any excess calls that occur within that interval are ignored until the next interval begins.
+// Throttling focuses on limiting the rate at which a function is executed. It guarantees that the function is executed at a controlled pace and doesn't exceed a certain rate, regardless of how frequently the events occur
+// Ensures a function is executed at most once in a specified time period.
+// Ideal when you want to execute a function at regular intervals during a continuous action.
+// The function executes periodically, at fixed intervals.
+// Executes the function immediately and/or at regular intervals.
+// Handling window resize or scroll events.
+// API calls while dragging a slider.
+// Limits the rate at which the function is called.
+// Throttling controls the rate of function execution, useful for continuously updating actions.
 
 
 
+//! Q what is differences between the DeBouncing and throttling 
+
+// Debouncing :
+// Delays the execution of a function until after a certain period of inactivity.
+// The function is called only after the event has stopped firing for the specified delay.
+// Useful for events that should only trigger once user interaction has stopped (e.g., search input).
+// Ensures that the function executes only after a specific pause in event firing.
+// The function execution is postponed and only called after a delay when no events occur.
+// ex. Input fields (e.g., search box typing), window resize after resizing stops.
+// Reduces the number of function calls for events that occur frequently but need a delayed response.
+
+
+//	Throttling:
+// Ensures a function is executed at most once every specified interval.
+// The function is called at regular intervals, regardless of how frequently the event is triggered.
+// Useful for events that fire continuously and should be limited to a set frequency (e.g., scrolling).
+// Ensures that the function executes at regular intervals during continuous event firing.
+//The function execution happens at regular intervals, even if events occur continuously.
+// ex Scroll events, mouse movements, window resize during resizing.
+// Reduces the number of function calls for events that need to execute regularly, avoiding overload.

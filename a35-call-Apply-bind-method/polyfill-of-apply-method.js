@@ -12,25 +12,32 @@ function purChanCar(currency, price) {
 }
 
 // purChanCar.call(car,"$",90)
-
-// Define a custom 'myApply' method on Function.prototype
 Function.prototype.myApply = function (context = {}, args = []) {
-  // Check if 'this' is a function (only functions can be called using 'apply')
-  if (typeof this !== "function") {
-    throw new Error(this + "this is not callable...."); // Throw an error if not a function
+  // Check if 'this' is a function, as myApply can only be called on functions
+  if (typeof this !== 'function') {
+      throw new Error(this + ' is not callable'); // Throw an error if 'this' is not a function
   }
-  if (!Array.isArray(args)) {
-    return "please give argument as an array";
-  }
-  // Assign the context object if none is provided (default to an empty object)
-  context.fn = this; //  Temporarily assign 'this' (the function) as a method of the context object
-  const result = context.fn(...args); // Invoke the function with the provided arguments
 
-  // Clean up by removing the temporary method from the context object
-  delete context.fn;
+  // Check if args is an array
+  if (!Array.isArray(args)) {
+      throw new Error('Please provide the arguments as an array'); // Throw an error if args is not an array
+  }
+
+  // Assign the function (which 'this' refers to) to a property on the context object
+  // This allows us to call the function with the provided context
+  context.fun = this;
+
+  // Call the function using the context object and the arguments array
+  // The function will execute with 'context' as 'this', and 'args' as the parameters
+  const result = context.fun(...args);
+
+  // Remove the temporary 'fun' property from the context object
+  // This cleanup is important to avoid polluting the context object
+  delete context.fun;
 
   // Return the result of the function call
   return result;
-};
+}
+
 
 purChanCar.myApply(car, ["$", 90]);

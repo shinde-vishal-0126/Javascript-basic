@@ -1,4 +1,5 @@
-//|returning multiple value form the function
+// # returning multiple value form the function
+// ? How to return multiple value form the function
 
 // basically javascript return single value if you want return multiple value from a function you can pack the return value as an element
 // of an array or as properties as an array
@@ -7,11 +8,9 @@
 function getName(){
     let firstName = 'vishal'
     let lastName ='shinde'
-
     // return multiple value from function you can pack the return value as an element of an array
     return [firstName, lastName]
 }
-
 let value = getName();
 console.log('name', value);
 let firstName = value[0];
@@ -19,14 +18,14 @@ let lastName = value[1]
 console.log('firstName', firstName);
 console.log('lastName',lastName);
 
+
 // but if you have to multiple value form function in ES6 you have to used destructuring syntax
 // here we have to used the array destructuring
 const [fName, lName] = getName()
 console.log("fName",fName);
 console.log(lName,lName);
 
-//! return multiple value from a function using an object 
-
+// - return multiple value from a function using an object 
 function displayName(){
     let fname = 'vishal';
     let age = 45;
@@ -42,7 +41,6 @@ const {fname, age, id} = displayName()
 console.log(fName);
 console.log(age);
 console.log(id)
-
 
 // @ NOTE
 // javascript does not support function that return multiple value you can wrap multiple value into an array or array of object and return array or object
@@ -61,5 +59,4 @@ const neaAge = 25
 // using shortHand notation for object properties
 const person ={name, neaAge};
 console.log(person)
-
 // instead of specifying fullName:name and neaAge:age, you can simply used nama and age you can simply nama and age directly with the object literal 

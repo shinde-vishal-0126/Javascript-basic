@@ -1,12 +1,12 @@
-//? 1.@ What is  Defer in JavaScript ? :
-// - In JavaScript,//* the defer attribute is used in the script tag to specify that a script should be executed after the HTML document has been fully parsed.
-// -  It ensures that the script does not block the HTML parsing process, improving the performance of the page loading.
-// - Key Points :
-// - 1. Non-blocking - Unlike scripts without defer, which block the parsing of the HTML until the script is downloaded and executed, a deferred script allows the HTML parsing to continue while the script is being downloaded in the background.
-// - 2. Runs After Document Parsing: The script will only run after the entire document has been parsed, but before the DOMContentLoaded event.
-// - This behavior is useful for scripts that manipulate the DOM, as it ensures the DOM is fully available when the script runs.
+//? What is  Defer in JavaScript ? :
+//  In JavaScript,the defer attribute is used in the script tag to specify that a script should be executed after the HTML document has been fully parsed.
+//   It ensures that the script does not block the HTML parsing process, improving the performance of the page loading.
+//  Key Points :
+//  1. Non-blocking - Unlike scripts without defer, which block the parsing of the HTML until the script is downloaded and executed, a deferred script allows the HTML parsing to continue while the script is being downloaded in the background.
+//  2. Runs After Document Parsing: The script will only run after the entire document has been parsed, but before the DOMContentLoaded event.
+//  This behavior is useful for scripts that manipulate the DOM, as it ensures the DOM is fully available when the script runs.
 
-//? 2.@   How string can be converted into an array with the help of split() method.
+//? 2  How string can be converted into an array with the help of split() method.
 // 1. split() method is the most common way to convert a string into an array by splitting the string based on a specified delimiter
 var test = "a,b,c,d,e,f,g,h";
 console.log("test", test.split(" ,")); // test [
@@ -303,3 +303,21 @@ for(let i=0;i < 6;i++){
 
 // what is setTimeout function scope ()
 // it is Global scope
+
+
+//? what is differences between the property and method () in javascript 
+//! Property :
+// property is key-value pair that hold the data of an object 
+// defined the characteristics of the object (store data or state of object ) 
+// the value of the property are any type like num, string, object, array function 
+// property are store the information about object  and access or set the data 
+// hold static and dynamic data 
+// no need to this
+
+// method() :
+// method() is function it is property of an object 
+// method() is associate with in object 
+// method defined behavior or action that can perform object .
+// it alway a function 
+// method used to perform operation on properties 
+// used this to refer to the object belongs to 

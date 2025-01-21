@@ -1,5 +1,5 @@
-// | what is callback Hell 
-// Callback hell, also known as the "pyramid of doom", refer to a situation in asynchronous javascript programming  where multiple nested callback functions are used to handle asynchronous operation 
+//? what is callback Hell 
+//* Callback hell, also known as the "pyramid of doom", refer to a situation in asynchronous javascript programming  where multiple nested callback functions are used to handle asynchronous operation
 //  This happens when multiple asynchronous operations depend on each other, and each operation requires a callback to execute the next step.
 // this often result in the code that is difficult to read , understand and maintain du to its deeply nested structure.
 
@@ -11,7 +11,6 @@
 //? when callback Hell occurs ?
 // when you are dealing with series of asynchronous operation like reading the file , making the api request, handling the event  that depends on each other and where you need to wait for response before executing next part of code so handled them using the callback function 
 // Multiple Dependent Asynchronous Operations :Each step in an asynchronous process depends on the result of the previous step, requiring nested callbacks.
-
 // Imagine you need to do three asynchronous tasks sequentially
 
 task1(function(result1) {
@@ -40,7 +39,6 @@ setTimeout(()=>{
 })
 
 //! example  of call back hell
-
 console.log('start');
 function importantAction(username, callback){
     setTimeout(() => {
@@ -55,7 +53,6 @@ function likeTheVideo(video, callback){
 function shareVideo(videotaped, callBack){
     setTimeout(()=>{
         callBack(`please share the video ${videotaped}`)
-
     },300)
 }
 
@@ -69,8 +66,6 @@ likeTheVideo('java', function(message){
 shareVideo('testing', function(message){
     console.log(message)
 })
-
-
 //! What happens in above code execution here we have to execute the code also separately?
 // These functions are executed independently of each other.
 // importantAction runs first, but after that, likeTheVideo and shareVideo are called immediately (without waiting for the previous ones to finish).
@@ -79,8 +74,9 @@ shareVideo('testing', function(message){
 // The code is more straightforward and doesn't require deep nesting.
 // Functions are executed as soon as possible, so there is no waiting for each one to complete before the next starts.
 //! Disadvantages:
-// If you need to ensure a specific order of execution (like in your first example), this approach doesn't provide that sequence by default. You would have to add logic (e.g., chaining callbacks or using Promises) to ensure the correct order.
-
+// If you need to ensure a specific order of execution (like in your first example),
+//  this approach doesn't provide that sequence by default. 
+// You would have to add logic (e.g., chaining callbacks or using Promises) to ensure the correct order.
 
 //! callback chaining
 importantAction('vishal', function(username){
@@ -93,7 +89,7 @@ importantAction('vishal', function(username){
     })
 })
 
-//! What happens in call back chaining?
+//? What happens in call back chaining?
 // This is a typical callback chain, where functions are executed in sequence.
 // importantAction starts first. After 1 second, it logs the welcome message and then calls likeTheVideo.
 // After another 500 ms, it logs the message to like the video and calls shareVideo.
@@ -112,23 +108,27 @@ importantAction('vishal', function(username){
 //? How the callback hell are problematic :
 //* Nested Callback: 
 // Where you have multiple asynchronous operation  that depends on each other you might end up nesting callback with each other the code indentation depends and creating pyramid like structure 
-
 //* Readability : 
 // Callback hell make you code less readable and harder to understand  because it introduce the lot of indentation and visual noise
-
 //* Error Handling : 
 // Handling the in nested callback structure can be complex you need to ensure that you handle the error at the appropriate level and propagate them correctly 
 // This can lead to error-porn code especially dealing with different error scenario  in different layer of nesting 
-
-//* Maintenances: 
-// When you need to modify or extend your code so callback hell it more porn to introducing the bug 
-
+// Handling errors in multiple nested callbacks is cumbersome. Each callback needs its own error handling, which leads to repetitive and inconsistent error handling code.
+// If any error occurs in one of the callbacks, the entire chain may fail, and debugging that error could require tracking multiple callback chains.
+//* Maintainability
+// With deeply nested callbacks, managing changes in the logic becomes difficult. If a bug occurs, debugging it becomes challenging as you need to trace through multiple levels of nesting.
+// Adding new features or modifying the flow often requires significant refactoring, which introduces the risk of introducing more bugs.
 //* Debugging :
 // Debugging the code with deep nested callback can be frustrating 
 // Identifying the source of issue , setting the breakpoint and inspecting the variable more challenging due to more complex structure of the code
+//*Testing
+// Unit testing is harder due to the nested structure. Since the functions are tightly coupled and depend on one another, isolating them for testing can be complex and inefficient.
+//* Scalability
+// Adding more functionality to an application that uses callback hell can lead to even deeper nesting, making the code less scalable.
+// The complexity grows quickly as new requirements are added, leading to a less robust and extensible codebase.
 
  
-//|  To addressed the issue associated with the callback Hell javascript introduce the several technique and pattern 
+//?  To addressed the issue associated with the callback Hell javascript introduce the several technique and pattern 
 //! Promise:
 // Promise are more structure way to handled the asynchronous operation making code more readable and maintainable 
 // Promise allow us to chain operation and handled error more gracefully 

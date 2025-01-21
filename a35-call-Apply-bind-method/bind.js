@@ -3,6 +3,7 @@
 // instead of calling the function immediately it provides another reusable function which we can call later on to execute give task related to function
 // 
 
+
 const person ={
     firstName:'vishal',
     lastName:'shinde'
@@ -13,5 +14,6 @@ console.log(`${getting}, ${message}, ${this.firstName} ${this.lastName}`)
 }
 
 const newFunction = fullName.bind(person, 'hi');
-console.log(newFunction) // this is function return copy of the fullName function which an be invoked later
+console.log(newFunction) 
+// this is function return copy of the fullName function which an be invoked later
 newFunction("!")

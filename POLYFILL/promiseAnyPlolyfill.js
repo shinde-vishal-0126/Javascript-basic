@@ -82,7 +82,6 @@ myPromise.any = function (promises) {
           .catch((error) => {
             result.push(error);
             settledPromises++;
-  
             // If all promises have been processed (rejected), reject with AggregateError
             if (settledPromises === promises.length) {
               reject(new AggregateError(result, "All promises were rejected"));
