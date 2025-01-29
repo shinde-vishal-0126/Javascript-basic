@@ -16,12 +16,13 @@
 // new Date(Milliseconds)
 
 //? 1. how to create data object  
-//* - Date objects are created with the new Date() constructor
+// Date objects are created with the new Date() constructor
 let currentDate = new Date();
 console.log("currentDate",currentDate);// 2024-09-21T02:39:03.238Z  indicates that the time is in UTC (coordinated universal time )
 //  This format is in the ISO 8601 standard return a string representation of the current data and time with separator by latter T and z
 // - it suggests that your environment (like some browsers' developer tools or Node.js) is automatically calling toISOString() or a similar method for the output. This format is in ISO 8601 and represents the date and time in UTC.
-//
+/
+
 //? 2  new Date(date_string) create date based on the provided string 
 //* created date object with specified data and time:
 const data = '2024-09-21T02:39:03.238Z'

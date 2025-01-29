@@ -1,7 +1,7 @@
-//| full example of all promise polyfill like promise.all, race, allSettled, any with finally block
-
+// =======================================================================================================================================
+// # full example of all promise polyfill like promise.all, race, allSettled, any with finally block
+// =======================================================================================================================================
 // first write the code for the promise
-
 // promise having the executer function which take resolve and reject function as an arguments.
 
 function myPromise(executer) {
@@ -16,8 +16,7 @@ function myPromise(executer) {
     let isNotFulFiled = false; // track the reject is called or not
     let onFinally;
   
-    // first we need to register resolved handler
-  
+  // - first we need to register resolved handler
     this.then = function (cb) {
       onResolved = cb;
       if (isFulFilled && !isCalled) {
@@ -27,7 +26,8 @@ function myPromise(executer) {
       return this; // return same promise object for chaining purpose
     };
   
-    // then register the reject handler
+
+  // - then register the reject handler
     this.catch = function (cb) {
       onReject = cb;
       if (isNotFulFiled && !isCalled) {
@@ -37,9 +37,8 @@ function myPromise(executer) {
       return this
     };
   
-    // register the finally block if all the promise are rejector or not reject 
-  
-     this.finally = function (cb) {
+// - register the finally block if all the promise are rejector or not reject 
+ this.finally = function (cb) {
       onFinally = cb;
       // If the promise is already settled, call the finally block immediately
       if (isCalled) {
@@ -48,9 +47,8 @@ function myPromise(executer) {
       return this;
     };
   
-    // then defined the resolved function for fulFiled async operation
-  
-    function resolve(val) {
+// - then defined the resolved function for fulFiled async operation
+  function resolve(val) {
       if (typeof onResolved === "function" && !isCalled) {
         onResolved(val);
         isCalled = true;
@@ -63,9 +61,8 @@ function myPromise(executer) {
       }
     }
   
-    // defined the function for isNotFulField async operation
-  
-    function reject(err) {
+// - defined the function for isNotFulField async operation
+  function reject(err) {
       if (typeof onReject === "function" && !isCalled) {
         onReject(err);
         isCalled = true;
@@ -86,7 +83,7 @@ function myPromise(executer) {
     }
   }
   
-  // polyFill of promise.all
+// - polyFill of promise.all
   myPromise.all = function(promise){
       return new myPromise ((resolve, reject)=>{
           let result = [];
@@ -107,7 +104,7 @@ function myPromise(executer) {
   }
   
   
-  myPromise.allSettled = function(promise){
+myPromise.allSettled = function(promise){
       return new myPromise((resolve, reject) =>{
           let result = [];
           let promiseCount = 0
@@ -134,8 +131,7 @@ function myPromise(executer) {
       })
   }
   
-  
-  myPromise.race = function(promise){
+myPromise.race = function(promise){
       return new myPromise ((resolve,reject)=>{
           promise.forEach((pro,index)=>{
               pro.then((res)=>{
@@ -148,9 +144,7 @@ function myPromise(executer) {
   }
   
   
-  
-  
-  myPromise.any = function (promises) {
+ myPromise.any = function (promises) {
       return new myPromise((resolve, reject) => {
         let result = [];
         let settledPromises = 0;
@@ -198,8 +192,7 @@ function myPromise(executer) {
   });
   
   
-  
-  myPromise.any([newPromise, newPromise1, newPromise2, newPromise3])
+   myPromise.any([newPromise, newPromise1, newPromise2, newPromise3])
     .then((res) => {
       console.log("Resolved:", res); // First resolved promise will be logged
     })
@@ -212,7 +205,7 @@ function myPromise(executer) {
   
   
   
-    myPromise.all([newPromise, newPromise1, newPromise2, newPromise3])
+ myPromise.all([newPromise, newPromise1, newPromise2, newPromise3])
     .then((res) => {
       console.log("Resolved:", res); // First resolved promise will be logged
     })
@@ -225,7 +218,7 @@ function myPromise(executer) {
   
   
   
-    myPromise.allSettled([newPromise, newPromise1, newPromise2, newPromise3])
+myPromise.allSettled([newPromise, newPromise1, newPromise2, newPromise3])
     .then((res) => {
       console.log("Resolved:", res); // First resolved promise will be logged
     })
@@ -237,7 +230,7 @@ function myPromise(executer) {
     });
   
   
-    myPromise.race([newPromise, newPromise1, newPromise2, newPromise3])
+   myPromise.race([newPromise, newPromise1, newPromise2, newPromise3])
     .then((res) => {
       console.log("Resolved:", res); // First resolved promise will be logged
     })

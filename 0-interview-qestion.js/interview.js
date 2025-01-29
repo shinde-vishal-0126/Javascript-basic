@@ -6,10 +6,13 @@
 //  2. Runs After Document Parsing: The script will only run after the entire document has been parsed, but before the DOMContentLoaded event.
 //  This behavior is useful for scripts that manipulate the DOM, as it ensures the DOM is fully available when the script runs.
 
+
+
 //? 2  How string can be converted into an array with the help of split() method.
 // 1. split() method is the most common way to convert a string into an array by splitting the string based on a specified delimiter
 var test = "a,b,c,d,e,f,g,h";
-console.log("test", test.split(" ,")); // test [
+console.log("test", test.split(" ,")); 
+// test [
 //     'a', 'b', 'c',
 //     'd', 'e', 'f',
 //     'g', 'h'
@@ -26,9 +29,6 @@ console.log(array);
 const newStr = "Hello";
 const arr = [...newStr];
 console.log(arr);
-
-//? 3 @ what is variable shadowing ?
-// Variable shadowing is when a variable with the same name is declared in an inner scope as a variable in an outer scope. In such cases, the variable in the inner scope hides the variable in the outer scope. Any references to the variable within the inner scope will refer to the inner variable, effectively "shadowing" the outer variable.
 
 //? 4@ if you divide any number with zero than what happen ?
 // it return infinity: like 8/0 = infinity also -8/0 = -infinity
@@ -61,6 +61,7 @@ const bay = "bay" in tree;
 console.log(bay); // false
 const length = "length" in tree;
 console.log(length); // true - because length is the array property so return true.
+
 
 //? @ 8 what is differences between == and === ?
 //* (==)
@@ -103,7 +104,6 @@ console.log("triple equal :", num === num1); //false
 
 //? 10.@ How to convert string into number ?
 // You have to convert string into number using type casting
-
 // 1. The Number() function converts a string to a number. It will return NaN (Not-a-Number) if the string cannot be converted.
 const str1 = "42";
 // const num1 = Number(str1); // convert with the help of constructor
@@ -132,7 +132,7 @@ const str6 = "42.5";
 const num6 = +str6;
 console.log(num6); // Output: 42.5
 
-//?  11 How to iterate the object using the  simple for loop  ?
+//?  11 How to iterate the object using the simple for loop  ?
 // Example;
 const marks = {
   vishal: "10",
@@ -188,6 +188,7 @@ console.log(typeof shape); // string
 
 const size = 1;
 console.log(typeof size); // number
+
 
 // ? Conditional and Ternary operator  ?
 // Shortcut to execute the condition
@@ -299,7 +300,6 @@ for(let i=0;i < 6;i++){
 
 
 // ? what is differences between debouncing and throttling
-
 
 // what is setTimeout function scope ()
 // it is Global scope

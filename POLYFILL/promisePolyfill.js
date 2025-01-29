@@ -1,5 +1,6 @@
-// polyfill of promise
-
+// =======================================================================================================================================
+// # polyfill of promise
+// =======================================================================================================================================
 function myPromise(executor) {
   // Variables to store success and failure handlers
   let onResolved; // Will hold the callback for the resolve case
@@ -11,16 +12,11 @@ function myPromise(executor) {
   let error; // Stores the rejected error
 
 
-
 //   this.then = function(callback): This is the then method, which allows you to register a function (callback) that will be executed when the promise is successfully resolved.
-
 // onResolve = callback;: The callback passed into then is stored in the variable onResolve so it can be called later when the promise is resolved.
-
 // if(isFulField && !isCalled): If the promise has already been resolved (isFulField is true) and the callback hasn't been called yet (isCalled is false), it immediately calls the callback with the resolved value.
-
 // isCalled = true; onResolve(value);: This sets the flag isCalled to true to prevent the callback from being invoked multiple times, and calls the onResolve callback with the resolved value (value).
-
-  // Method to register the resolve handler
+// - Method to register the resolve handler
   this.then = function (callback) {
     // Assign the callback to onResolved
     onResolved = callback;
@@ -35,15 +31,10 @@ function myPromise(executor) {
 
 
   // this.catch = function(callback): This is the catch method, which allows you to register a function (callback) to handle any errors or rejections from the promise.
-  
   // onReject = callback;: The callback passed into catch is stored in the variable onReject to be called later if the promise is rejected.
- 
   // if(isNotFulField && !isCalled): If the promise has been rejected (isNotFulField is true) and the callback hasn't been called yet (isCalled is false), it immediately calls the callback with the rejection error.
- 
   // isCalled = true; onReject(error);: This sets the flag isCalled to true and calls the onReject callback with the rejection error (error).
-
-
-  // Method to register the reject handler
+  // - Method to register the reject handler
   this.catch = function (callback) {
     // Assign the callback to onRejected
     onRejected = callback;
@@ -57,15 +48,10 @@ function myPromise(executor) {
   };
 
 
-
-
-  // function resolved(val): This function is called when the promise is resolved, and it takes a value (val) as an argument.
-
+// function resolved(val): This function is called when the promise is resolved, and it takes a value (val) as an argument.
 // if(typeof onResolve === 'function' && !isCalled): If the onResolve callback is defined and hasn't been called yet, it calls onResolve(val) with the resolved value (val), and sets isCalled to true to avoid multiple calls.
-
 // else { value = val; isFulField = true; }: If the onResolve callback is not defined, it stores the resolved value in value and marks the promise as fulfilled by setting isFulField to true.
-
-  // Resolve function to handle successful async operation
+// - Resolve function to handle successful async operation
   function resolve(result) {
     // If there's a registered success handler and it hasn't been called yet
     if (typeof onResolved === "function" && !isCalled) {
@@ -78,11 +64,9 @@ function myPromise(executor) {
     }
   }
 
-  //! for finally block 
-//   this.finally = function(callback): This is the finally method, which allows you to register a function (callback) that will always be executed when the promise is settled, whether resolved or rejected.
-
+// - for finally block 
+//this.finally = function(callback): This is the finally method, which allows you to register a function (callback) that will always be executed when the promise is settled, whether resolved or rejected.
 // onFinally = callback;: The callback passed into finally is stored in the variable onFinally to be called later.
-
 // if(isCalled){ onFinally(); }: If the promise is already settled (isCalled is true), it immediately calls the onFinally callback.
 
 

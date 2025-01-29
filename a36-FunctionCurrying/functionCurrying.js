@@ -1,14 +1,11 @@
 //? 1. What is function currying ?
 // Def:
-//!  function currying is a technique in javascript for evaluating a function with multiple arguments transformed into a sequence of functions with a single argument.
-
+// - function currying is a technique in javascript for evaluating a function with multiple arguments transformed into a sequence of functions with a single argument.
 // Currying creates a chain of functions, each handling a single argument.
-
-//! currying is function that take one argument at time and return new function expecting the next argument 
+// currying is function that take one argument at time and return new function expecting the next argument 
 
 //? how to constructed the currying ?
 // also currying function are constructed by chaining closure by immediately returning there inner function symaltaniosuly
-
 // In other word : 
 // When function instead of taking all arguments at one time, take the first one and return a new function, that takes the 2nd one argument and return a new function, which takes third and so forth until all arguments have been fulfilled.
 

@@ -147,6 +147,7 @@ math();
 // Update : if you define a variable using the const you can not change the value later in your function (it can not update value once it is defined.)
 // Hoisting : Hoisting not allowed  (it is allowed but not initialized.)
 
+
 //? 4 @ What is the concept of variable shadowing in java script ?
 //* 1. Def : Variable shadowing is nothing but variable declared in the inner scope having the same variable name defined on its outer scope the value in the variable assigned in the inner scope this is known as variable showing.
 // 2. Shadowing occurs when a variable in an inner scope has the same name as a variable in an outer scope, and the concept of scope determines which variable is accessible in a given context. (variable with the same name exists in both the outer and inner scope, the inner variable takes precedence within its scope.)

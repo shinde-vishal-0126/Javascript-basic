@@ -1,7 +1,8 @@
-// filter polyfill
+//===================================================================================================================================================
+//# filter polyfill
+//===================================================================================================================================================
 
 // array.filter(callback(element[, index[, array]])[, thisArg])
-
 // callback: A function executed on each array element. It should return true to include the element in the new array and false otherwise.
 // element: The current element being processed.
 // index (optional): The index of the current element.
