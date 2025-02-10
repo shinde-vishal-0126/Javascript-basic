@@ -88,7 +88,6 @@ console.log(getCounter()); // 10 // called the function and it show the result
 // - This issue is known as leak of the global variable.
 // Under the hood the javascript engine first look up the counter variable in the local scope of the getCounter() function  because there is no var, let and const keyword  so counter variable not created in local scope so it has not been create,
 // So javascript engine follow the scope chain and look up counter variable in the global scope also doesn't have the counter variable in global scope so javascript engine create counter variable in global scope.
-
 // - So fix this weird behavior you used the use Strict top of the script
 
 // ? Why does it happen?

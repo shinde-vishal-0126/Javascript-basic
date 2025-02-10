@@ -28,3 +28,30 @@ Array.prototype.myFilter = function(callback){
 const numbers = [1, 2, 3, 4, 5, 6];
 const evenNumbers = numbers.myFilter(num => num % 2 === 0);
 console.log(evenNumbers); // Output: [2, 4, 6]
+
+
+
+
+// also used this approach 
+if (!Array.prototype.myFilter) {
+    Array.prototype.myFilter = function (callback, thisArg) {
+        if (typeof callback !== "function") {
+            throw new TypeError(callback + " is not a function");
+        }
+
+        // Create a new array to store filtered results
+        const result = [];
+
+        // Iterate over the array elements
+        for (let i = 0; i < this.length; i++) {
+            if (i in this) { // Check if the index exists in the array (important for sparse arrays)
+                // Call the callback function with element, index, and array
+                if (callback.call(thisArg, this[i], i, this)) {
+                    result.push(this[i]); // Add to result if condition is met
+                }
+            }
+        }
+
+        return result; // Return the filtered array
+    };
+}

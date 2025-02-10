@@ -41,3 +41,35 @@ console.log(mul)
 
 
 
+// also used this approach
+
+Array.prototype.myMap = function(callback,thisArg){
+    if(typeof callback !== 'function'){
+         throw new Error(callback + "not a function ");    
+    }
+    let temp = [];
+    for(let i=0;i<this.length;i++){
+        if(i in this){
+          temp.push(callback.call(thisArg, this[i], i, this));
+           
+        }
+    }
+    return temp;
+}
+
+let arr = [1,2,3,4,5,6];
+
+const newArr = arr.myMap((ele, index, arr)=>{
+    return ele * 2;
+})
+
+console.log(newArr)
+
+
+// ? what is used of thisArg in map() filter() and forEach() method.?
+// thisArg is an optional parameter in JavaScript array methods like map(), forEach(), filter(), etc. It allows you to specify a custom this value for the callback function.
+// callback → Function to test each element.
+// thisArg (optional) → Value used as this inside callback.
+// If thisArg is provided, the callback function uses it as this.
+// If thisArg is not provided, this defaults to undefined (or window in non-strict mode).
+// thisArg sets the this context inside the callback function.

@@ -1,9 +1,9 @@
-//!Callback function :
-// A callback function in JavaScript is a function that is passed as an argument to another function and is executed after some operation has been completed or at a specific point in the function's execution.
+// # Callback function :
+// - A callback function in JavaScript is a function that is passed as an argument to another function and is executed later after some operation has been completed or at a specific point in the function's execution.
 // a callback function is a function pass as an argument to another function and it executed after the complication of task
 //Callbacks are often used in asynchronous code, such as when working with timers, network requests, or event handlers
 
-//# Original Code: Why It Returns undefined
+//- Original Code: Why It Returns undefined
 console.log("start....."); // Synchronously log "start....."
 function importantAction(username) {
   // setTimeout schedules a function to be executed after 1 second, but doesn't block further code execution.
@@ -19,23 +19,27 @@ const message = importantAction("vishal");
 console.log(message); // This will log `undefined`.
 console.log("stop"); // Synchronously log "stop"
 
-//! Asynchronous Behavior:
+// 1.Asynchronous Behavior:
 // The function importantAction calls setTimeout. setTimeout is asynchronous, meaning it schedules the provided callback (the console.log) to run after the specified time (1 second).
-//* Asynchronous Execution:
+// 2. Asynchronous Execution:
 // Even though setTimeout delays the callback, it does not block the execution of the rest of the code. So, after calling importantAction, the next statement (console.log('stop')) is executed immediately without waiting for the setTimeout to finish.
-//* No Return Value:
+// 3. No Return Value:
 // The importantAction function does not explicitly return a value. Functions in JavaScript return undefined by default if no return value is provided.
 // Therefore, when you call importantAction('vishal'), the function returns undefined. This value (undefined) is assigned to message.
-//* When message is logged:
+// 4. When message is logged:
 // message holds the value undefined because importantAction didn’t return anything. Therefore, console.log(message) outputs undefined.
+
+//? Why Use Callbacks?
+// Asynchronous Operations: Callbacks are commonly used in JavaScript for handling asynchronous tasks like API requests, file reading, or event handling.
+// Code Reusability: Callbacks allow functions to be more generic and reusable.
+// Event Handling: They enable functions to execute only when a certain event occurs.
 
 // The Issue:
 //? Why does it return undefined?
 // importantAction doesn't return anything, and it uses setTimeout (asynchronous), so the function finishes executing immediately, and undefined is returned as the default return value.
 
-//* Solution: Using a Callback to Handle the Result
+//- Solution: Using a Callback to Handle the Result
 // To fix this, we can use a callback that will handle the result of importantAction once it completes the asynchronous task. The callback will allow us to receive the result of importantAction after the delay.
-
 // Updated Code with Callback:
 console.log("start....."); // Synchronously log "start....."
 function importantAction(username, callback) {
@@ -53,8 +57,8 @@ importantAction("vishal", (message) => {
 });
 console.log("stop"); // Synchronously log "stop"
 
-//Explanation of How the Callback Solves the Issue:
-//! Callback Function:
+//-Explanation of How the Callback Solves the Issue:
+//? Callback Function:
 // The importantAction function now takes a second argument: callback. 
 // This argument is expected to be a function that will be called once the asynchronous operation (inside setTimeout) finishes.
 // Inside setTimeout, after 1 second, the callback(result) is invoked, where result is the string "subscribed to the vishal".
@@ -64,26 +68,26 @@ console.log("stop"); // Synchronously log "stop"
 // Even though the result is logged asynchronously (after 1 second), the rest of the code (console.log('stop')) executes immediately.
 // The result ("subscribed to the vishal") is logged after the synchronous logs.
 
-//! What Happens Before and After the Callback?
-// Before the Callback:
+//? What Happens Before and After the Callback?
+// 1 Before the Callback:
 // console.log('start.....') runs and outputs 'start.....'.
 // importantAction('vishal', ...) is called, but it doesn’t return anything immediately. 
 // It schedules the callback to run later.
 // console.log('stop') runs and outputs 'stop' immediately because importantAction is asynchronous and doesn't block the execution of other code.
 
-//! After the Callback:
+// 2. After the Callback:
 // After 1 second, the callback function provided to importantAction is executed.
 // The callback logs the message: 'subscribed to the vishal'.
 
-//! Why is the callback necessary?
+//? Why is the callback necessary?
 // The callback is used to handle asynchronous code. 
 // Without it, the function importantAction cannot "return" the result in the usual synchronous way because it uses setTimeout to delay the logging of the result. The callback ensures that once the delay is over, the result is processed.
 
-//* Before using a callback: 
+// Before using a callback: 
 // The function importantAction does not return anything (undefined), and the result is not available immediately. 
 // The message variable is assigned undefined, and console.log(message) outputs undefined.
 
-//* After using a callback: 
+// After using a callback: 
 // We use a callback to handle the result after the asynchronous operation completes.
 //  This ensures that the result is available after the delay, and it’s passed to the callback function which logs it to the console. The rest of the code continues to execute immediately.
 
@@ -98,7 +102,7 @@ function getUser(name) {
 // processUser is higher order function because it tack function callback function as an argument
 processUserInput("vishal", getUser);
 
-// javascript function are first-class-citizen
+// ? javascript function are first-class-citizen
 // Def : so callback function is function that you pass into another function as an argument for execution later.
 // example 1:
 function isOdd(number) {
@@ -123,7 +127,7 @@ console.log(filtered(numbers, isEven));
 // The result is the same, However you can pass any function that accept an argument and return boolean value to the second argument for the filter function
 // in above example you have to pass the anonymous function to the filter function instead of using the separate function
 
-//! you have also used the arrow function as a callback function show in the following code
+// ? you have also used the arrow function as a callback function show in the following code
 function filter(numbers, callback) {
   let data = [];
   for (const number of numbers) {
@@ -136,14 +140,12 @@ function filter(numbers, callback) {
 const oddNumbers = filter(numbers, (number) => number % 2 != 0);
 console.log("oddNumbers", oddNumbers);
 
-//| note :
-// callback function is function that pass as an argument to another function and it intended to be executed after completion of some asynchronous operation and specified time of condition
+// - note :
+// 1. callback function is function that pass as an argument to another function and it intended to be executed after completion of some asynchronous operation and specified time of condition
+// 2. callback function are commonly used in situation when you want ensure that certain code to be executed when the some perticular task completed such as reading file, making an api request and handling user event
+// 3. So callback function are crucial in javascript for handling the asynchronous operation, event handling and various another scenario where you need to control the flow of your code base on the completion of some task
 
-// callback function are commonly used in situation when you want ensure that certain code to be executed when the some perticular task completed such as reading file, making an api request and handling user event
-
-// So callback function are crucial in javascript for handling the asynchronous operation, event handling and various another scenario where you need to control the flow of your code base on the completion of some task
-
-//!  They can sometimes lead to callback hell and deeply nested code base structure when dealing with set of or multiple asynchronous operation
+// ?  They can sometimes lead to callback hell and deeply nested code base structure when dealing with set of or multiple asynchronous operation
 // example 2
 function fetchData(url, callback) {
   setTimeout(function () {
@@ -159,13 +161,14 @@ fetchData("www.google.com", handledData);
 //  It simulates an asynchronous operation and after the delay calls the provided callback function with the fetch data .
 //  HandledData is call back function that processed the data when it available
 
-
-//! classification of callback function
+// ==============================================================================
+//# classification of callback function
+// ===============================================================================
 // 1. Synchronous callback function
 // 2. asynchronous callback function
 // callback function is a function that is passed as an argument to the another function to be called back at a later time
 
-//example 1  (normal way without using callback function of higher order function);
+//-example 1  (normal way without using callback function of higher order function);
 const add = (a, b) => {
   return a + b;
 };
@@ -181,7 +184,7 @@ const mul = (a, b) => {
 };
 console.log(mul(4, 5));
 
-// * so instead of that you have to used callback function and higher order function that are easy
+//  so instead of that you have to used callback function and higher order function that are easy
 const add1 = (a, b) => {
   return a + b;
 };
@@ -295,7 +298,6 @@ asynchronousCallback();
 // Asynchronous means that if javascript has to wait for an operation to complete it will execute the rest of code while waiting
 // NOTE
 // 1.So javascript is single threaded language it carries asynchronous operation vai the callback queue and event loop
-
 // example :
 //  suppose that you need to develop a script that download a picture from a remote server and process it after download complete
 // Download the picture from a remote server take time depending on the network speed and the size of the picture
@@ -380,3 +382,12 @@ fetChImage(uri, function (uri) {
 });
 // so this call back strategy does not scale well when the complexity grow significantly
 //  multiple callbacks are nested on top of each other
+
+
+//? what are the problem with the callback ?
+// 2 main issue with the callback 
+// 1. callback Hell
+// 2. inversion of control (control of execution away form the main program )
+// The control of execution moves away from the main program, making it harder to predict what happens next.
+// inversion of control means we have to loose the control of your program when we have to used callback  
+// callbacks are a common example of Inversion of Control (IoC) because when we pass a function as a callback, we give up control over when and how that function will be executed. Instead, the function is called later by another piece of code, 

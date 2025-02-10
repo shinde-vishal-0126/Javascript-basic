@@ -38,14 +38,23 @@ function myPromise(executer) {
     };
   
 // - register the finally block if all the promise are rejector or not reject 
- this.finally = function (cb) {
-      onFinally = cb;
-      // If the promise is already settled, call the finally block immediately
-      if (isCalled) {
-        onFinally();
-      }
-      return this;
-    };
+//  this.finally = function (cb) {
+//       onFinally = cb;
+//       // If the promise is already settled, call the finally block immediately
+//       if (isCalled) {
+//         onFinally();
+//       }
+//       return this;
+//     };
+
+
+this.finally = function(callback) {
+  onFinally = callback;
+  if (onResolved || onReject) {
+      onFinally();
+  }
+  return this;
+};
   
 // - then defined the resolved function for fulFiled async operation
   function resolve(val) {
@@ -88,16 +97,19 @@ function myPromise(executer) {
       return new myPromise ((resolve, reject)=>{
           let result = [];
           let completePromise = 0;
+           let hasFailed = false
   
           promise.forEach((pro, index)=>{
               pro.then((res)=>{
                   result[index] = res;
                   completePromise++;
-                  if(completePromise === promise.length){
+                  if(completePromise === promise.length && !hasFailed){
                       resolve(result)
                   }
               }).catch((error)=>{
+                hasFailed = true
                   console.log(error)
+                  reject(error)
               })
           })
       })
@@ -123,7 +135,7 @@ myPromise.allSettled = function(promise){
                       status:'rejected', error
                   };
                   promiseCount++
-                  if(promiseCount ===promise.length ){
+                  if(promiseCount === promise.length ){
                       resolve(result)
                   }
               })

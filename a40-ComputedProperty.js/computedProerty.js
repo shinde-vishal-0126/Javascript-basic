@@ -1,12 +1,15 @@
-//| Computed property
 
-//? what is computed property name ?
-//! A computed property in JavaScript refers to the ability to dynamically define object property names using expressions. 
+// =================================================================================================================
+// # Computed property
+// =================================================================================================================
+
+// ? what is computed property name ?
+// - A computed property in JavaScript refers to the ability to dynamically define object property names using expressions. 
 // Instead of hardcoding a property name, you can compute it based on a variable or an expression. 
 // This is particularly useful when the property name needs to be determined at runtime.
-//ES6 allow you to used an expression [] bracket (will used the result of expression as the property name of an object)
+// ES6 allow you to used an expression [] bracket (will used the result of expression as the property name of an object)
 
-//! computed property used [] bracket expression;
+//  computed property used [] bracket expression;
  let propName ='c'
  const rank ={
     a : 1,
@@ -18,7 +21,7 @@
 // above example [propName] is computed property of the rank object  the properly name derived from the value of the propName variable
 
 
-//!Like object literal you can used computed property for getter and setter in class
+// Like object literal you can used computed property for getter and setter in class
 let name = "fullName";
 class Person {
     constructor(firstName, lastName){
@@ -32,14 +35,13 @@ class Person {
 let per = new Person('vishal','shinde');
 console.log(per.fullName);
 
-//! NOTE 
+// - NOTE 
 // computed property allow you to use the value of expression as the property name of the object 
 
 
-//! ex.
+//- ex.
 const prefix = 'user_';
 const id = 123;
-
 const user = {
   [`${prefix}${id}`]: 'John Doe'
 };

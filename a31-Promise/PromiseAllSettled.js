@@ -1,4 +1,5 @@
 //? promise.allSettled() :
+// it wait for to all promises are settled weather they are resolved or rejected 
 // Having the same syntax like Promise.all and promise.race but functionality is a bit different.
 // It work like exactly promise .all but even only one of the promise failed it gone return all of the promise that are fulfilled as well 
 // In promise.all if any on of the Promise are failed then it filed all the promise.all()

@@ -2,14 +2,14 @@
 
 //? find the output of the following code.
 
-// let a = 12;
+let a = 12;
 // let a ='vishal' // when you deal with string return NaN
-let a = false; // when you work with boolean it return true for 1 and 0 for false
-console.log(a * 12);
+// let a = false; // when you work with boolean it return true for 1 and 0 for false
+console.log(a * 12); 
 // exponent: The power to which the base is raised.
 console.log(a ** 12);
 
-// =============================================================================================================================================
+
 
 // ? 2.
 // this concept is know as Global variable leak
@@ -21,16 +21,25 @@ function example() {
 }
 example(); // 50000
 
-// =============================================================================================================================================
 
+
+//? 3.
 function test() {
+  // which is refer to the property of the function itself
   console.log(test.abc); // undefined
   // 600
 }
 test();
+// assign property to the function (javascript function are object so you can attached properties to them)
 test.abc = 400;
 test.abc = 600;
+// In JavaScript, functions are first-class objects, meaning they can have properties like any other object.
+// test.abc is a custom property of the function test, not a local variable.
+// Since test.abc is modified between calls, its value changes accordingly.
 test();
+
+
+
 
 // ? tell me the output
 console.log({} == {}); // false
@@ -203,7 +212,6 @@ function concat(str,str2){
 concat(str, str2)
 
 
-
 // - using built in method 
 
 function combineString(str,str2){
@@ -222,8 +230,6 @@ function combineString(str,str2){
         result = result + str2.slice(minLength)
     }
     return result 
-
-
 }
 console.log(combineString(str,str2))
 
@@ -264,6 +270,7 @@ console.log("Numbers:", result.numberArray);
 console.log("Characters:", result.charArray);
 
 
+
 //? give the example of function currying ?
 function currying(operator){
   return function(a){
@@ -301,7 +308,16 @@ let newObj1 = {...object}
 // Deep copy
 let deepCopy = JSON.parse(JSON.stringify(object));
 
+
+
 // ? what is differences between map function and forEach function
+// map : return new array with transformed element based on teh callback function 
+//     : does not modify the array create new array
+//    :  chaining method allowed like filter reduce
+// forEach() : does not return anything (undefined) simply execute the function for each element.
+          //  : modified the original array if change the element inside the callback  
+          // : chaining is not possible.
+
 
 //? what do you mean by event bubbling ?
 // event bubbling :
@@ -312,17 +328,50 @@ let deepCopy = JSON.parse(JSON.stringify(object));
 // Propagation: The event then bubbles up from the target element to its parent element, then to its parent's parent, and so on, until it reaches the root element (usually the <html> or <body> element).
 // Event Handlers: As the event bubbles up, any event listeners attached to these ancestor elements are triggered, provided that they are set to listen for that event type.
 
+
 //? what pure function in javascript with example ?
+// (Deterministic – Given the same inputs, it always returns the same output.
+// No Side Effects – It does not modify external states (e.g., global variables, DOM, databases).)
 // pure function if function that get same output when execute multiple time with same argument 
 // does not modify variable, dom or global variable, it having constant result with same input 
 // it is rely or does not modify any state 
 // does not perform any sideeffect.
+function add(a, b) {
+  return a + b; 
+}
+console.log(add(2, 3)); // 5
+console.log(add(2, 3)); // 5 (Same input, same output)
+
+//? what is impure function ?
+// It is not deterministic – The same input may not return the same output.
+// It has side effects – It modifies external state (e.g., global variables, DOM, API calls, databases).
+let total = 0; 
+
+function addToTotal(value) {
+    total += value;  // Modifies global variable
+    return total;
+}
+
+console.log(addToTotal(5));  // 5
+console.log(addToTotal(5));  // 10 (Same input, different output) 
 
 
 
 //? what is transpiling in coding 
+// Transpiling is the process of converting modern JavaScript (ES6+) code into an older version (ES5 or earlier) so that it can run in older browsers that do not support the latest features.
+
+// 🛠 Tools for Transpiling:
+
+// Babel (Most popular)
+// TypeScript (also compiles to JavaScript)
+// SWC (faster alternative to Babel)
+
 // When you want to convert one type of source code into another, you're typically using a transpiler or a compiler. 
 // These tools take the source code written in one language or syntax and transform it into another format or language.
+
+//? Why is Transpiling Needed?
+// New JavaScript features (e.g., let, const, arrow functions, classes, async/await) may not be supported in older browsers. 
+// -Transpiling ensures backward compatibility.
 
 // - Transpiling from TypeScript to JavaScript
 // TypeScript is a superset of JavaScript that adds type annotations and other features. A transpiler like tsc (TypeScript compiler) is used to convert TypeScript code into regular JavaScript code.
@@ -332,12 +381,33 @@ let deepCopy = JSON.parse(JSON.stringify(object));
 
 // -SASS/SCSS to CSS
 // A CSS preprocessor like SASS is used to write styles in a more feature-rich syntax. These tools transpile SCSS into regular CSS that browsers can read.
-
 // JSX to JavaScript (React)
 // In React, JSX is used to write UI components, but browsers can't directly interpret JSX. A tool like Babel or a build tool like Webpack is used to convert JSX into regular JavaScript.
 //  transpilers allow developers to write code in a more expressive, efficient, or higher-level way, and then transform it into a more widely-supported or optimized version. If you're talking about converting one source code language or format to another, transpilers are probably what you're looking for.
 
+
 //? what are new features in es6 please explain 
+// ES6 Features List with One-Line Descriptions 🚀
+// let and const – Block-scoped variable declarations (let is mutable, const is immutable).
+// Arrow Functions (=>) – Shorter function syntax that inherits this from the surrounding scope.
+// Template Literals – String interpolation using backticks (`Hello, ${name}!`).
+// Default Parameters – Assign default values to function parameters (function greet(name = "User")).
+// Destructuring Assignment – Extract values from arrays and objects into variables (const {name, age} = obj).
+// Rest Operator (...) – Collects multiple elements into an array (function sum(...nums)).
+// Spread Operator (...) – Expands an array or object (const arr2 = [...arr1, 4, 5]).
+// Enhanced Object Literals – Shorthand for defining object properties ({ name, age } instead of { name: name, age: age }).
+// Promises – Handle asynchronous operations (fetchData().then().catch()).
+// Classes – ES6 class syntax for object-oriented programming (class Person { constructor(name) { this.name = name; } }).
+// Modules (import/export) – Split code into reusable modules (import { func } from './module.js').
+// Map and Set – New collection types (Map for key-value pairs, Set for unique values).
+// for...of Loop – Iterates over iterable objects (for (let item of arr) {}).
+// Object.entries() and Object.values() – Retrieve keys and values from an object.
+// find() and findIndex() – Locate elements in an array based on a condition.
+// includes() for Arrays – Checks if an array contains a specific value (arr.includes(3)).
+// startsWith() and endsWith() – Check string prefixes and suffixes (str.startsWith("Hello")).
+// Number.isFinite() and Number.isNaN() – Improved number checking methods.
+// Generators (function*) – Create iterators with yield keyword (function* gen() { yield 1; yield 2; }).
+// WeakMap and WeakSet – Similar to Map and Set, but with weak references.
 
 
 //? what is promise and its state 

@@ -1,12 +1,14 @@
-//? what is instances of operator 
-//! def:
-// instances of operator it is used to check if the Given  object is an instances of a perticular call or constructor function
 
+// ===============================================================================================================================
+// # what is instances of operator 
+// ===============================================================================================================================
+
+// ? what is instances of operator 
+// def:
+// - instances of operator it is used to check if the Given  object is an instances of a perticular call or constructor function
 // it return return true or false (if it is the instances of perticular class it return true other wise false)
-
-//The instanceof operator returns true if the prototype of the constructor is found in the prototype chain of the object; otherwise, it returns false.
-
-//! instances operator determine if the constructor prototype appears in prototype chain of objects
+// The instanceof operator returns true if the prototype of the constructor is found in the prototype chain of the object; otherwise, it returns false.
+// instances operator determine if the constructor prototype appears in prototype chain of objects
 
 // it return true of false (so instances of operator is binary operator) 
 // i.e it used to test object is given type or not (  check if an object is an instances of the type )

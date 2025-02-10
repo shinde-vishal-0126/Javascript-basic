@@ -1,6 +1,8 @@
 //? Promise.any();
 // It exactly like promise.race but what it does it 
 // It only returns the first fulfilled promise and ignores all the rejected promises.
+// it wait for the first success promise.
+// if all the promise are rejected it show the result as aggregation Error  with array of all the promise error
 console.log('start');
 function importantAction(user_name) {
     return new Promise((resolved, reject) => {

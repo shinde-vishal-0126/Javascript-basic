@@ -1,36 +1,54 @@
 //==========================================================================================================================================================
 // # shallow copy or deep copy
 //==========================================================================================================================================================
-// - before that we have to understand the copy object or array
+//  before that we have to understand the copy object or array
+
 let obj11 = { name: "Alice", age: 25 };
 let obj = obj1; // obj is now referencing the same object as obj1
 obj.age = 26; // Modify the 'age' property of obj
 console.log(obj11); // { name: "Alice", age: 26 }
 console.log(obj); // { name: "Alice", age: 26 }
+
 // The expression obj = obj1 simply means that the variable obj is being assigned the value of obj1.
 //  This doesn't create a copy of obj1; instead, it makes both obj and obj1 refer to the same object in memory. 
 // Therefore, any changes made to obj will also affect obj1, and vice versa, since they both point to the same reference.
 
-// - Key Concept:
+// Key Concept:
 // No Copy: This is not creating a copy of obj1, but rather making obj point to the same object as obj1. 
 // Both variables refer to the same memory location.
 // Shared State: Any changes made through either obj or obj1 will reflect in the other, as they are referencing the same object.
 
-// -Shallow Copy:
+// Shallow Copy:
 //  Only the top-level properties are copied, not nested objects or arrays.
-// - Deep Copy:
+
+//  Deep Copy:
 //  Both top-level and nested properties are copied, so no references are shared between the original and the copy.
+
+
+// when you have to used Object.assign() with array Object.assign() will copy properties (not elements) from source arrays to the target array.
+// const arr1 = [1, 2, 3];
+// const arr2 = [4, 5];
+
+// Object.assign(arr1, arr2);
+
+// console.log(arr1); // [4, 5, 3]
+// console.log(arr2); // [4, 5] // copies properties of arr2 (indices 0 and 1) into arr1, but it does not overwrite the entire array.
+
+
 
 // ==========================================================================================================================================================
 // # shallow copy
 // ==========================================================================================================================================================
+
 //  JavaScript, shallow copy and deep copy are two methods for copying the contents of an object or array, but they behave differently when it comes to nested structures like arrays or objects.
-// - 1. Shallow Copy:
+// 1. Shallow Copy:
 // A shallow copy means that only the first level of the object or array is copied, and nested objects or arrays still point to the same reference as the original
-// - Objects: 
+
+// 2. Objects: 
 // When you create a shallow copy of an object, the top-level properties are copied.
 // However, if any of the properties are themselves objects or arrays, their references are copied, not the actual content. Therefore, modifying a nested object in the copied object will also affect the original object.
 // Arrays: In the case of arrays, a shallow copy creates a new array, but the items inside it are still references to the original objects or arrays.
+
 // ex.
 const obj111 = { a: 1, b: { c: 2 } };
 // Shallow copy using Object.assign
@@ -42,7 +60,8 @@ shallowCopyObj.b.c = 20; // This will affect obj1 because b is a reference to th
 console.log(obj111); // { a: 1, b: { c: 20 } }
 console.log(shallowCopyObj); // { a: 10, b: { c: 20 } }
 
-// - Example 2: Shallow Copy with an Array
+//  Example 2: Shallow Copy with an Array
+
 // Original array
 const arr11 = [1, 2, { a: 3 }];
 // Shallow copy using slice or spread operator
@@ -52,13 +71,16 @@ shallowCopyArr[2].a = 20; // Changing nested object (this will also affect arr1)
 console.log("Original Array:", arr1); // [1, 2, { a: 20 }]
 console.log("Shallow Copy:", shallowCopyArr); // [10, 2, { a: 20 }]
 
+
+
 // ==========================================================================================================================================================
 // # Deep copy
 // ==========================================================================================================================================================
 
-// - 2. Deep Copy:
+// 2. Deep Copy:
 // A deep copy means that the object or array and all its nested objects or arrays are recursively copied.
 // Therefore, the copied object or array will not share any references with the original, and changes made to the copy will not affect the original object.
+
 // - Objects & Arrays: 
 // Both objects and arrays are deeply copied, meaning each nested object or array gets a new reference
 const obj22 = { a: 1, b: { c: 2 } };
@@ -70,13 +92,14 @@ deepCopyObj.b.c = 20; // This will not affect obj2
 console.log(obj22); // { a: 1, b: { c: 2 } }
 console.log(deepCopyObj); // { a: 10, b: { c: 20 } }
 
-// - Summary:
-// - Shallow copy: 
+// Summary:
+// Shallow copy: 
 // Copies the top-level properties, but nested objects or arrays are shared by reference.
-//- Deep copy: 
+
+// Deep copy: 
 // Recursively copies all nested structures, so no references are shared between the original and the copy.
 
-// - Example 2: Deep Copy with an Array
+// Example 2: Deep Copy with an Array
 // Original array
 const arr22 = [1, 2, { a: 3 }];
 // Deep copy using JSON methods
@@ -86,19 +109,20 @@ deepCopyArr[2].a = 20; // Changing nested object (this will not affect arr2)
 console.log("Original Array:", arr2); // [1, 2, { a: 3 }]
 console.log("Deep Copy:", deepCopyArr); // [10, 2, { a: 20 }]
 
-// - Quick Summary: Shallow Copy vs Deep Copy in JavaScript
+//  Quick Summary: Shallow Copy vs Deep Copy in JavaScript
 // - Shallow Copy:
 //  Definition:
 //  A shallow copy creates a new object or array, but the nested structures (objects/arrays) are still shared by reference.
 
-//- Ways to Create a Shallow Copy:
+// Ways to Create a Shallow Copy:
+
 // For Objects:
 // 1. Object.assign({}, obj) – Copies the properties of an object.
 // For Arrays:
 // 2. Array.prototype.slice() – Creates a shallow copy of an array.
 // Spread operator ([...]) – Copies the elements of an array into a new array.
 
-// -Deep Copy:
+// Deep Copy:
 // Definition: \A deep copy recursively copies all values and nested structures, so the copy is entirely independent of the original.
 
 // - Ways to Create a Deep Copy:
@@ -160,7 +184,8 @@ console.log("Copied Array (arr2):", arr2); // [10, 2, 3, { name: "Bob" }]
 // ? write code to make deep copy of the give object
 //  make sure does not used the inbuilt method or function to make deep copy
 // 1. Function Purpose: 
-// The makeDeepCopy function creates a deep copy of an object or an array, meaning it recursively copies all nested objects and arrays, ensuring that no references to the original object or array are maintained in the copied structure.
+// The makeDeepCopy function creates a deep copy of an object or an array, 
+// meaning it recursively copies all nested objects and arrays, ensuring that no references to the original object or array are maintained in the copied structure.
 // 2. Base Case: 
 // The function first checks if the input (obj) is not an object or is null. If true, it simply returns the input since primitive types (like numbers, strings, null, undefined, etc.) don't need deep copying.
 // 3. Recursive Case:
@@ -203,19 +228,35 @@ let person = {
   hobbies: ["reading", "traveling", "coding"],
 };
 // this is function where we have to make deep copy
-function makeDeepCopy(obj) {
-  if (typeof obj !== "object" || obj === null) {
-    return obj;
+const makeDeepCopy = (obj) => {
+  // Step 1: Check if the input is NOT an object or is null
+  // If it's a primitive (string, number, boolean, null, undefined, symbol, function), return it directly.
+  if (typeof obj !== 'object' || obj === null) { 
+      return obj; 
   }
+
+  // Step 2: Determine whether the input is an Array or an Object
+  // If it's an array, initialize an empty array; otherwise, initialize an empty object.
   const copiedValue = Array.isArray(obj) ? [] : {};
-  var keys = Object.keys(obj);
-  // console.log(keys);
+
+  // Step 3: Get all keys of the object (or array indices)
+  const keys = Object.keys(obj);
+
+  // Step 4: Iterate through each key in the object or index in the array
   for (let i = 0; i < keys.length; i++) {
-    copiedValue[keys[i]] = makeDeepCopy(obj[keys[i]]);
+      // Step 5: Recursively copy the value of each key
+      copiedValue[keys[i]] = makeDeepCopy(obj[keys[i]]);
+
+//  keys[i] represents the key (property name) of the original object (obj).
+// obj[keys[i]] gives the value associated with that key.
+// makeDeepCopy(obj[keys[i]]) ensures that if the value is another object or array, it is also deeply copied recursively.
+// copiedValue[keys[i]] = ... assigns the copied value to the corresponding key in copiedValue.
   }
+
+  // Step 6: Return the fully copied object or array
   return copiedValue;
-}
-console.log(makeDeepCopy(person));
+};
+
 // - used of deep copy
 // - Deep Copy:
 //  This function is useful when you need a new object or array that is completely independent of the original, especially when working with complex nested structures.

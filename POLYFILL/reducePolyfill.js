@@ -5,8 +5,7 @@
 //  It can be used for various operations such as summing numbers, flattening arrays, or accumulating values
 // array.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])
 
-// - The reduce() method in JavaScript is used to reduce an array to a single value by executing a callback function on each element. It accumulates results from each iteration and returns a single value as   final value.
-
+// - The reduce() method in JavaScript is used to reduce an array to a single value by executing a callback function on each element. It accumulates results from each iteration and returns a single value as final value.
 // callback: A function executed on each element in the array. It receives four arguments:
 // accumulator: The accumulated value from the previous iteration or the initial value (if provided).
 // currentValue: The current element being processed in the array.
